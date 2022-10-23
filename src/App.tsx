@@ -12,7 +12,7 @@ const App = () => {
       <button onClick={() => setMode("opponentlist")}>
         Show Opponent List
       </button>
-      {mode === "opponentlist" ? <OpponentList /> : <CardList />};
+      {mode === "opponentlist" ? <OpponentList /> : <CardList />}
     </>
   );
 };
