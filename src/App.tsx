@@ -1,9 +1,9 @@
 import React from "react";
 
-import CardList from "./components/CardList";
+import OpponentList from "./components/OpponentList";
 
 const App = () => {
-  return <CardList />;
+  return <OpponentList />;
 };
 
 export default App;
