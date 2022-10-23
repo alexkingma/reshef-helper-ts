@@ -1,7 +1,9 @@
 import React from "react";
 
+import CardList from "./components/CardList";
+
 const App = () => {
-  return <div>My App Component</div>;
+  return <CardList />;
 };
 
 export default App;
