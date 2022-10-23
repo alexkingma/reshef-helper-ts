@@ -10,6 +10,7 @@
     "@types/node": "^18.7.23",
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
+    "@types/styled-components": "^5.1.26",
     "@typescript-eslint/eslint-plugin": "^5.38.1",
     "@typescript-eslint/parser": "^5.38.1",
     "eslint": "^8.24.0",
@@ -24,7 +25,13 @@
     "webpack-dev-server": "^4.11.1"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
+    "@mui/icons-material": "^5.10.9",
+    "@mui/material": "^5.10.10",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-data-table-component": "^7.5.3",
+    "react-dom": "^18.2.0",
+    "styled-components": "^5.3.6"
   }
 }
