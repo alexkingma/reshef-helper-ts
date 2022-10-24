@@ -1,6 +1,5 @@
 const duellists = [
   {
-    id: 1,
     name: "Tristan Taylor",
     deck: {
       Griggle: 3,
@@ -27,7 +26,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 2,
     name: "Yugi Muto",
     deck: {
       "Gaia the Dragon Champion": 1,
@@ -63,7 +61,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 3,
     name: "Joey Wheeler",
     deck: {
       "Battle Warrior": 3,
@@ -92,7 +89,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 4,
     name: "Rebecca",
     deck: {
       "Blast Juggler": 3,
@@ -126,7 +122,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 5,
     name: "Roland",
     deck: {
       Doron: 1,
@@ -167,7 +162,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 6,
     name: "Mokuba",
     deck: {
       "Blue-Eyed Silver Zombie": 3,
@@ -192,7 +186,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 7,
     name: "Puppeteer of Doom",
     deck: {
       "Megirus Light": 3,
@@ -219,7 +212,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 8,
     name: "Jinzo",
     deck: {
       "Patrol Robo": 3,
@@ -248,7 +240,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 9,
     name: "Johnny Steps",
     deck: {
       "Water Omotics": 1,
@@ -277,7 +268,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 10,
     name: "Crump",
     deck: {
       "Kappa Avenger": 3,
@@ -302,7 +292,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 11,
     name: "Strings",
     deck: {
       Monsturtle: 3,
@@ -327,7 +316,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 12,
     name: "Umbra",
     deck: {
       "Nuvia the Wicked": 3,
@@ -354,7 +342,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 13,
     name: "Lumis",
     deck: {
       "Mystic Tomato": 3,
@@ -381,7 +368,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 14,
     name: "Arkana",
     deck: {
       "Big Eye": 3,
@@ -402,12 +388,11 @@ const duellists = [
     },
     lp: 8000,
     field: "Yami",
-    location: "Pier",
+    location: "Domino Pier",
     payout: 0,
     ante: [],
   },
   {
-    id: 15,
     name: "Bandit Keith",
     deck: {
       "The Winged Dragon of Ra (Sphere Mode)": 1,
@@ -438,12 +423,11 @@ const duellists = [
     },
     lp: 8000,
     field: "Yami",
-    location: "Exhibition",
+    location: "Egypt Exhibition",
     payout: 0,
     ante: [],
   },
   {
-    id: 16,
     name: "Odion",
     deck: {
       "Mystical Beast Serket": 1,
@@ -487,7 +471,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 17,
     name: "Marik Ishtar",
     deck: {
       "Cyber-Tech Alligator": 1,
@@ -518,7 +501,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 18,
     name: "Paradox",
     deck: {
       "Boar Soldier": 3,
@@ -547,7 +529,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 19,
     name: "Dark Mokuba",
     deck: {
       "Gemini Elf": 2,
@@ -582,7 +563,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 20,
     name: "Seto Kaiba",
     deck: {
       "Ancient Lamp": 1,
@@ -613,7 +593,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 21,
     name: "Sol Chevalsky",
     deck: {
       "Thousand-Eyes Restrict": 2,
@@ -649,7 +628,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 22,
     name: "Reshef the Dark Being",
     deck: {
       "Vorse Raider": 3,
@@ -679,7 +657,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 23,
     name: "Duke Devlin 1",
     deck: {
       "Winged Cleaver": 3,
@@ -706,7 +683,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 24,
     name: "Duke Devlin 2",
     deck: {
       "Hourglass of Life": 3,
@@ -732,7 +708,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 25,
     name: "PaniK 1",
     deck: {
       "Curtain of the Dark Ones": 3,
@@ -754,12 +729,11 @@ const duellists = [
     },
     lp: 8000,
     field: "Yami",
-    location: "Train",
+    location: "Duel Express",
     payout: 0,
     ante: [],
   },
   {
-    id: 26,
     name: "PaniK 2",
     deck: {
       "Dark Assailant": 3,
@@ -787,7 +761,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 27,
     name: "Mimic of Doom 1",
     deck: {
       "Invader from Another Dimension": 3,
@@ -816,7 +789,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 28,
     name: "Mimic of Doom 2",
     deck: {
       "Dream Clown": 3,
@@ -842,7 +814,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 29,
     name: "Para 1",
     deck: {
       "Frenzied Panda": 3,
@@ -869,7 +840,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 30,
     name: "Para 2",
     deck: {
       "Jirai Gumo": 2,
@@ -901,7 +871,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 31,
     name: "Para 3",
     deck: {
       "Mystic Tomato": 3,
@@ -933,7 +902,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 32,
     name: "Dox 1",
     deck: {
       "Jirai Gumo": 2,
@@ -965,7 +933,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 33,
     name: "Dox 2",
     deck: {
       "Skull Red Bird": 3,
@@ -997,7 +964,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 34,
     name: "Jean-Claude Magnum 1",
     deck: {
       "The Bewitching Phantom Thief": 3,
@@ -1024,7 +990,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 35,
     name: "Jean-Claude Magnum 2",
     deck: {
       "Vishwar Randi": 3,
@@ -1046,12 +1011,11 @@ const duellists = [
     },
     lp: 8000,
     field: "Arena",
-    location: "Pier",
+    location: "Domino Pier",
     payout: 0,
     ante: [],
   },
   {
-    id: 36,
     name: "Rare Hunter 1",
     deck: {
       "Three-Headed Geedo": 3,
@@ -1076,7 +1040,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 37,
     name: "Rare Hunter 2",
     deck: {
       "Exodia the Forbidden One": 3,
@@ -1101,7 +1064,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 38,
     name: "Bonz 1",
     deck: {
       "Wicked Mirror": 3,
@@ -1131,7 +1093,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 39,
     name: "Bonz 2",
     deck: {
       "Dragon Zombie": 3,
@@ -1157,7 +1118,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 40,
     name: "Bonz 3",
     deck: {
       "Great Mammoth of Goldfine": 3,
@@ -1183,7 +1143,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 41,
     name: "Bonz (Imposter)",
     deck: {
       "Baron of the Fiend Sword": 3,
@@ -1204,14 +1163,13 @@ const duellists = [
       Ookazi: 1,
       "Acid Trap Hole": 2,
     },
-    lp: 8000,
+    lp: 10000,
     field: "Yami",
     location: "Pegasus Castle",
     payout: 0,
     ante: [],
   },
   {
-    id: 42,
     name: "Rex Raptor 1",
     deck: {
       "Lesser Dragon": 3,
@@ -1237,7 +1195,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 43,
     name: "Rex Raptor 2",
     deck: {
       "Sword Arm of Dragon": 3,
@@ -1264,7 +1221,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 44,
     name: "Rex Raptor 3",
     deck: {
       "Sword Arm of Dragon": 2,
@@ -1292,7 +1248,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 45,
     name: "Rex Raptor (Imposter)",
     deck: {
       "Darkfire Dragon": 3,
@@ -1313,14 +1268,13 @@ const duellists = [
       Ookazi: 1,
       "Acid Trap Hole": 2,
     },
-    lp: 8000,
+    lp: 10000,
     field: "Yami",
     location: "Pegasus Castle",
     payout: 0,
     ante: [],
   },
   {
-    id: 46,
     name: "Weevil Underwood 1",
     deck: {
       "Parasite Paracide": 1,
@@ -1355,7 +1309,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 47,
     name: "Weevil Underwood 2",
     deck: {
       "Great Moth": 1,
@@ -1387,7 +1340,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 48,
     name: "Weevil Underwood 3",
     deck: {
       "Larvae Moth": 2,
@@ -1416,7 +1368,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 49,
     name: "Weevil Underwood (Imposter)",
     deck: {
       "Flying Kamakiri #1": 3,
@@ -1437,14 +1388,13 @@ const duellists = [
       Ookazi: 1,
       "Acid Trap Hole": 2,
     },
-    lp: 8000,
+    lp: 10000,
     field: "Yami",
     location: "Pegasus Castle",
     payout: 0,
     ante: [],
   },
   {
-    id: 50,
     name: "Mako Tsunami 1",
     deck: {
       "Sea Kamen": 3,
@@ -1473,7 +1423,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 51,
     name: "Mako Tsunami 2",
     deck: {
       "Turtle Bird": 1,
@@ -1503,7 +1452,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 52,
     name: "Mako Tsunami 3",
     deck: {
       "Giant Red Seasnake": 2,
@@ -1531,7 +1479,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 53,
     name: "Mako Tsunami (Imposter)",
     deck: {
       "Crazy Fish": 3,
@@ -1552,14 +1499,13 @@ const duellists = [
       Ookazi: 1,
       "Acid Trap Hole": 2,
     },
-    lp: 8000,
+    lp: 10000,
     field: "Yami",
     location: "Pegasus Castle",
     payout: 0,
     ante: [],
   },
   {
-    id: 54,
     name: "Mai Valentine 1",
     deck: {
       "Harpie Lady": 3,
@@ -1590,7 +1536,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 55,
     name: "Mai Valentine 2",
     deck: {
       "Sonic Bird": 2,
@@ -1625,7 +1570,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 56,
     name: "Mai Valentine 3",
     deck: {
       "Skull Red Bird": 2,
@@ -1648,12 +1592,11 @@ const duellists = [
     },
     lp: 8000,
     field: "Mountain",
-    location: "Pier",
+    location: "Domino Pier",
     payout: 0,
     ante: [],
   },
   {
-    id: 57,
     name: "Mai Valentine (Imposter)",
     deck: {
       "Skull Red Bird": 3,
@@ -1674,14 +1617,13 @@ const duellists = [
       Mountain: 1,
       "Acid Trap Hole": 2,
     },
-    lp: 8000,
+    lp: 10000,
     field: "Yami",
     location: "Pegasus Castle",
     payout: 0,
     ante: [],
   },
   {
-    id: 58,
     name: "Espa Roba 1",
     deck: {
       "Cyber Raider": 3,
@@ -1708,7 +1650,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 59,
     name: "Espa Roba 2",
     deck: {
       "Axe Raider": 3,
@@ -1734,7 +1675,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 60,
     name: "Espa Roba (Imposter)",
     deck: {
       "Ground Attacker Bugroth": 3,
@@ -1756,14 +1696,13 @@ const duellists = [
       "Sword of Dark Destruction": 1,
       "Acid Trap Hole": 2,
     },
-    lp: 8000,
+    lp: 10000,
     field: "Yami",
     location: "Pegasus Castle",
     payout: 0,
     ante: [],
   },
   {
-    id: 61,
     name: "Duel Computer (Novice)",
     deck: {
       "Armed Ninja": 3,
@@ -1789,7 +1728,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 62,
     name: "Duel Computer (Standard)",
     deck: {
       "Guardian of the Throne Room": 2,
@@ -1827,7 +1765,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 63,
     name: "Duel Computer (Expert)",
     deck: {
       "Castle of Dark Illusions": 3,
@@ -1862,7 +1799,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 64,
     name: "Maximillion Pegasus (HoE)",
     deck: {
       "Thousand-Eyes Restrict": 3,
@@ -1886,7 +1822,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 65,
     name: "Dark Joey (HoE)",
     deck: {
       "Gearfried the Iron Knight": 3,
@@ -1915,7 +1850,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 66,
     name: "Yami Bakura (HoE)",
     deck: {
       "Headless Knight": 3,
@@ -1944,7 +1878,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 67,
     name: "Yami Yugi (HoE)",
     deck: {
       "Queen's Knight": 3,
@@ -1974,7 +1907,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 68,
     name: "Yami Marik (HoE)",
     deck: {
       "Executor - Makyura": 3,
@@ -2002,7 +1934,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 69,
     name: "Noah (HoE)",
     deck: {
       "Chiron the Mage": 3,
@@ -2031,7 +1962,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 70,
     name: "Shadi (HoE)",
     deck: {
       "Dark Elf": 3,
@@ -2060,7 +1990,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 71,
     name: "guy with the red hat in domino square",
     deck: {
       "Ancient Jar": 3,
@@ -2085,7 +2014,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 72,
     name: "other guy in domino square",
     deck: {
       "Dancing Elf": 3,
@@ -2110,7 +2038,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 73,
     name: "Guy above Domino Square",
     deck: {
       "Zone Eater": 3,
@@ -2135,7 +2062,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 74,
     name: "guy right of domino square with glasses",
     deck: {
       "Dark Plant": 3,
@@ -2160,7 +2086,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 75,
     name: "other guy right of domino square",
     deck: {
       Griggle: 3,
@@ -2185,7 +2110,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 76,
     name: "guy above that area",
     deck: {
       "Bite Shoes": 3,
@@ -2210,7 +2134,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 77,
     name: "guy with red hair under that area",
     deck: {
       "Queen's Double": 3,
@@ -2235,7 +2158,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 78,
     name: "other guy",
     deck: {
       Bat: 3,
@@ -2260,7 +2182,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 79,
     name: "guy in area south of clocktower square",
     deck: {
       "Sinister Serpent": 3,
@@ -2285,7 +2206,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 80,
     name: "guy with yellow hair left of that area",
     deck: {
       "Shadow Specter": 3,
@@ -2310,7 +2230,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 81,
     name: "train guy #1",
     deck: {
       "Morphing Jar #2": 1,
@@ -2356,12 +2275,11 @@ const duellists = [
     },
     lp: 8000,
     field: "Arena",
-    location: "Clock Tower Square",
+    location: "Domino Station",
     payout: 0,
     ante: [],
   },
   {
-    id: 82,
     name: "guy in same area of train guy #1",
     deck: {
       "Hiro's Shadow Scout": 3,
@@ -2386,7 +2304,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 83,
     name: "guy with brown (long) hair at train station",
     deck: {
       "Morphing Jar": 3,
@@ -2411,7 +2328,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 84,
     name: "guy with black, spikey hair at train station",
     deck: {
       Tomozaurus: 3,
@@ -2436,7 +2352,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 85,
     name: "guy with black hair in a ponytail at train station",
     deck: {
       Kaminarikozou: 3,
@@ -2461,7 +2376,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 86,
     name: "the last guy at train station",
     deck: {
       "Tentacle Plant": 3,
@@ -2486,7 +2400,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 87,
     name: "train guy #2 (at train station)",
     deck: {
       "Morphing Jar": 3,
@@ -2511,7 +2424,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 88,
     name: "guy in white shirt in train",
     deck: {
       "Morphing Jar": 3,
@@ -2538,7 +2450,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 89,
     name: "other guy in train",
     deck: {
       "Petit Dragon": 3,
@@ -2565,7 +2476,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 90,
     name: "train guy #3 (in train)",
     deck: {
       LaMoon: 1,
@@ -2587,12 +2497,11 @@ const duellists = [
     },
     lp: 8000,
     field: "Arena",
-    location: "Clock Tower Square",
+    location: "Duel Express",
     payout: 0,
     ante: [],
   },
   {
-    id: 91,
     name: "girl in suite back in train",
     deck: {
       "Droll Bird": 3,
@@ -2617,7 +2526,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 92,
     name: "father of the girl",
     deck: {
       "Ryu-Kishin": 3,
@@ -2648,7 +2556,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 93,
     name: "Kaiba-imitating guy",
     deck: {
       "White Dolphin": 3,
@@ -2675,7 +2582,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 94,
     name: "man at train station",
     deck: {
       "Petit Dragon": 3,
@@ -2700,7 +2606,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 95,
     name: "Takeshi (Domino Pier)",
     deck: {
       "Morphing Jar": 1,
@@ -2746,12 +2651,11 @@ const duellists = [
     },
     lp: 8000,
     field: "Arena",
-    location: "Pier",
+    location: "Domino Pier",
     payout: 0,
     ante: [],
   },
   {
-    id: 96,
     name: "Woman (Domino Pier)",
     deck: {
       "Wicked Mirror": 3,
@@ -2777,7 +2681,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 97,
     name: "guy in canada (not in the cave) on the far left",
     deck: {
       Dissolverock: 3,
@@ -2805,7 +2708,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 98,
     name: "other guy in canada outside the cave",
     deck: {
       "Mega Thunderball": 3,
@@ -2833,7 +2735,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 99,
     name: "Guy with red hair in area left",
     deck: {
       "Electric Snake": 3,
@@ -2860,7 +2761,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 100,
     name: "Other guy",
     deck: {
       "Super War-Lion": 3,
@@ -2888,7 +2788,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 101,
     name: "Guy dressed in blue",
     deck: {
       "Mega Thunderball": 3,
@@ -2916,7 +2815,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 102,
     name: "guy with yellow hair and glasses in area right",
     deck: {
       "Koumori Dragon": 3,
@@ -2949,7 +2847,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 103,
     name: "Area above guy",
     deck: {
       Zoa: 3,
@@ -2976,7 +2873,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 104,
     name: "Guy with red hair in area right-under",
     deck: {
       "Princess of Tsurugi": 3,
@@ -3003,7 +2899,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 105,
     name: "1 of those guys in Canada",
     deck: {
       "Mystical Sand": 2,
@@ -3031,7 +2926,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 106,
     name: "Woman in Ship",
     deck: {
       Sangan: 3,
@@ -3057,7 +2951,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 107,
     name: "Man in Ship",
     deck: {
       "Cosmo Queen": 1,
@@ -3107,7 +3000,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 108,
     name: "Guy-imitating Kaiba at Egyptian Exhibition",
     deck: {
       Dissolverock: 3,
@@ -3131,12 +3023,11 @@ const duellists = [
     },
     lp: 8000,
     field: "Arena",
-    location: "Clock Tower Square",
+    location: "Egypt Exhibition",
     payout: 0,
     ante: [],
   },
   {
-    id: 109,
     name: "Monkey #1",
     deck: {
       "Bolt Penguin": 3,
@@ -3163,7 +3054,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 110,
     name: "Monkey #2",
     deck: {
       "Bolt Penguin": 3,
@@ -3190,7 +3080,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 111,
     name: "Monkey #3",
     deck: {
       "Bolt Penguin": 3,
@@ -3217,7 +3106,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 112,
     name: "Monkey #4",
     deck: {
       Griggle: 3,
@@ -3244,7 +3132,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 113,
     name: "Ghoul left of Rex (Canada)",
     deck: {
       "Horn Imp": 3,
@@ -3266,13 +3153,12 @@ const duellists = [
       Eatgaboon: 2,
     },
     lp: 8000,
-    field: "Arena",
-    location: "Clock Tower Square",
+    field: "Yami",
+    location: "Canada",
     payout: 0,
     ante: [],
   },
   {
-    id: 114,
     name: "Ghoul right of Rex (Canada)",
     deck: {
       "The Judgement Hand": 3,
@@ -3294,13 +3180,12 @@ const duellists = [
       "Bear Trap": 2,
     },
     lp: 8000,
-    field: "Arena",
-    location: "Clock Tower Square",
+    field: "Yami",
+    location: "Canada",
     payout: 0,
     ante: [],
   },
   {
-    id: 115,
     name: "First Ghoul (Duel Express)",
     deck: {
       Takuhee: 3,
@@ -3320,14 +3205,13 @@ const duellists = [
       "Beast Fangs": 1,
       "Bear Trap": 2,
     },
-    lp: 8000,
-    field: "Arena",
-    location: "Clock Tower Square",
+    lp: 2000,
+    field: "Yami",
+    location: "Duel Express",
     payout: 0,
     ante: [],
   },
   {
-    id: 116,
     name: "Second Ghoul (Duel Express)",
     deck: {
       "Claw Reacher": 3,
@@ -3347,14 +3231,13 @@ const duellists = [
       "Red Medicine": 2,
       "Bear Trap": 2,
     },
-    lp: 8000,
-    field: "Arena",
-    location: "Clock Tower Square",
+    lp: 2000,
+    field: "Yami",
+    location: "Duel Express",
     payout: 0,
     ante: [],
   },
   {
-    id: 117,
     name: "Third Ghoul (Duel Express)",
     deck: {
       "Invader from Another Dimension": 3,
@@ -3374,14 +3257,13 @@ const duellists = [
       "Bright Castle": 1,
       "Bear Trap": 2,
     },
-    lp: 8000,
-    field: "Arena",
-    location: "Clock Tower Square",
+    lp: 2000,
+    field: "Yami",
+    location: "Duel Express",
     payout: 0,
     ante: [],
   },
   {
-    id: 118,
     name: "Ghoul (Outside Duel Express)",
     deck: {
       "Flame Ghost": 3,
@@ -3401,14 +3283,13 @@ const duellists = [
       "Red Medicine": 2,
       "Bear Trap": 2,
     },
-    lp: 8000,
-    field: "Arena",
-    location: "Clock Tower Square",
+    lp: 2000,
+    field: "Yami",
+    location: "Egypt Exhibition",
     payout: 0,
     ante: [],
   },
   {
-    id: 119,
     name: "Ghoul (Egyptian Exhibition)",
     deck: {
       "Mushroom Man #2": 3,
@@ -3428,14 +3309,13 @@ const duellists = [
       "Red Medicine": 2,
       "Bear Trap": 2,
     },
-    lp: 8000,
-    field: "Arena",
-    location: "Clock Tower Square",
+    lp: 2000,
+    field: "Yami",
+    location: "Egypt Exhibition",
     payout: 0,
     ante: [],
   },
   {
-    id: 120,
     name: "Ghoul (Domino City - right-under left)",
     deck: {
       "Dark King of the Abyss": 3,
@@ -3457,13 +3337,12 @@ const duellists = [
       "Bear Trap": 2,
     },
     lp: 8000,
-    field: "Arena",
+    field: "Yami",
     location: "Clock Tower Square",
     payout: 0,
     ante: [],
   },
   {
-    id: 121,
     name: "Ghoul (Domino City - right-under right)",
     deck: {
       "Hitotsu-Me Giant": 3,
@@ -3486,13 +3365,12 @@ const duellists = [
       "Bear Trap": 2,
     },
     lp: 8000,
-    field: "Arena",
+    field: "Yami",
     location: "Clock Tower Square",
     payout: 0,
     ante: [],
   },
   {
-    id: 122,
     name: "Ghoul (Domino City - under Clock Tower Square)",
     deck: {
       Lisark: 2,
@@ -3516,13 +3394,12 @@ const duellists = [
       "Bear Trap": 2,
     },
     lp: 8000,
-    field: "Arena",
+    field: "Yami",
     location: "Clock Tower Square",
     payout: 0,
     ante: [],
   },
   {
-    id: 123,
     name: "Ghoul (Domino City - left-under)",
     deck: {
       "Kappa Avenger": 3,
@@ -3545,13 +3422,12 @@ const duellists = [
       "Bear Trap": 2,
     },
     lp: 8000,
-    field: "Arena",
+    field: "Yami",
     location: "Clock Tower Square",
     payout: 0,
     ante: [],
   },
   {
-    id: 124,
     name: "Ghoul (Domino City - right-up)",
     deck: {
       "Little D": 3,
@@ -3574,13 +3450,12 @@ const duellists = [
       "Bear Trap": 2,
     },
     lp: 8000,
-    field: "Arena",
+    field: "Yami",
     location: "Clock Tower Square",
     payout: 0,
     ante: [],
   },
   {
-    id: 125,
     name: "Ghoul (Domino City - Clock Tower Square)",
     deck: {
       "Temple of Skulls": 3,
@@ -3601,13 +3476,12 @@ const duellists = [
       "Bear Trap": 2,
     },
     lp: 8000,
-    field: "Arena",
+    field: "Yami",
     location: "Clock Tower Square",
     payout: 0,
     ante: [],
   },
   {
-    id: 126,
     name: "Ghoul at Bonz",
     deck: {
       "Ice Water": 2,
@@ -3637,13 +3511,12 @@ const duellists = [
       "Red Medicine": 2,
     },
     lp: 8000,
-    field: "Arena",
-    location: "Clock Tower Square",
+    field: "Yami",
+    location: "Italy",
     payout: 0,
     ante: [],
   },
   {
-    id: 127,
     name: "Ghoul (Domino Station)",
     deck: {
       Kumootoko: 3,
@@ -3666,13 +3539,12 @@ const duellists = [
       Eatgaboon: 2,
     },
     lp: 8000,
-    field: "Arena",
+    field: "Yami",
     location: "Clock Tower Square",
     payout: 0,
     ante: [],
   },
   {
-    id: 128,
     name: "Millennium Guardian (Egyptian Exhibition)",
     deck: {
       "Mystical Sheep #2": 3,
@@ -3694,12 +3566,11 @@ const duellists = [
     },
     lp: 8000,
     field: "Arena",
-    location: "Clock Tower Square",
+    location: "Egypt Exhibition",
     payout: 0,
     ante: [],
   },
   {
-    id: 129,
     name: "Millennium Guardian (Domino Pier)",
     deck: {
       Morinphen: 1,
@@ -3723,12 +3594,11 @@ const duellists = [
     },
     lp: 8000,
     field: "Arena",
-    location: "Clock Tower Square",
+    location: "Domino Pier",
     payout: 0,
     ante: [],
   },
   {
-    id: 130,
     name: "Millennium Guardian (Italy)",
     deck: {
       "Wicked Dragon with the Ersatz Head": 3,
@@ -3750,12 +3620,11 @@ const duellists = [
     },
     lp: 8000,
     field: "Arena",
-    location: "Clock Tower Square",
+    location: "Italy",
     payout: 0,
     ante: [],
   },
   {
-    id: 131,
     name: "Millennium Guardian (China)",
     deck: {
       "Karate Man": 3,
@@ -3777,12 +3646,11 @@ const duellists = [
     },
     lp: 8000,
     field: "Arena",
-    location: "Clock Tower Square",
+    location: "China",
     payout: 0,
     ante: [],
   },
   {
-    id: 132,
     name: "Millennium Guardian (Canada)",
     deck: {
       "Mystical Sheep #1": 3,
@@ -3808,12 +3676,11 @@ const duellists = [
     },
     lp: 8000,
     field: "Arena",
-    location: "Clock Tower Square",
+    location: "Canada",
     payout: 0,
     ante: [],
   },
   {
-    id: 133,
     name: "Millennium Guardian #1 (China)",
     deck: {
       "Darkfire Dragon": 3,
@@ -3842,7 +3709,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 134,
     name: "Millennium Guardian #2 (China)",
     deck: {
       "Darkfire Dragon": 3,
@@ -3869,7 +3735,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 135,
     name: "Millennium Guardian #3 (China)",
     deck: {
       "Maiden of the Moonlight": 3,
@@ -3898,7 +3763,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 136,
     name: "Millennium Guardian #4 (China)",
     deck: {
       "Maiden of the Moonlight": 3,
@@ -3927,7 +3791,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 137,
     name: "Millennium Guardian #5 (China)",
     deck: {
       "Curse of Dragon": 3,
@@ -3952,7 +3815,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 138,
     name: "Chevaliers (Pegasus' Island - Cable Car)",
     deck: {
       "Maha Vailo": 2,
@@ -3992,7 +3854,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 139,
     name: "Chevalier #1 (The Dungeon - Western Path)",
     deck: {
       "Minomushi Warrior": 3,
@@ -4026,7 +3887,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 140,
     name: "Chevalier #1 (The Dungeon - Eastern Path)",
     deck: {
       "Breath of Light": 1,
@@ -4059,7 +3919,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 141,
     name: "Chevalier #2 (The Dungeon - Western Path)",
     deck: {
       "Maiden of the Moonlight": 3,
@@ -4086,7 +3945,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 142,
     name: "Chevalier #2 (The Dungeon - Eastern Path)",
     deck: {
       "Karate Man": 3,
@@ -4115,7 +3973,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 143,
     name: "Chevalier #3 (The Dungeon - Western Path)",
     deck: {
       "Darkfire Dragon": 3,
@@ -4144,7 +4001,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 144,
     name: "Chevalier #3 (The Dungeon - Eastern Path)",
     deck: {
       "Dark King of the Abyss": 3,
@@ -4173,7 +4029,6 @@ const duellists = [
     ante: [],
   },
   {
-    id: 145,
     name: "Chevalier #4 (The Dungeon - Western/Eastern Path)",
     deck: {
       "Ground Attacker Bugroth": 2,

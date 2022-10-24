@@ -8,8 +8,6 @@ import { default as cards } from "../assets/card_list";
 
 type CardRow = Card;
 
-const small = "80px";
-
 const getScaledColor = (val: number, min: number, max: number) => {
   const hue = Math.floor((val / (max - min)) * 120); // go from green to red
   return `hsl(${hue}, 100%, 50%)`;
@@ -46,7 +44,7 @@ const getAlignmentColor = (row: CardRow) => {
 const getCategoryColor = (row: CardRow) => {
   switch (row.category) {
     case "Monster":
-      return row.effect ? "#F36D10" : "#A39D37";
+      return row.effect ? "#F36D10" : "inherit";
     case "Magic":
       return "#4BE679";
     case "Trap":
@@ -61,32 +59,13 @@ const columns: TableColumn<CardRow>[] = [
     name: "ID",
     selector: (row: CardRow) => row.id,
     sortable: true,
-    width: small,
+    width: "70px",
   },
   {
     name: "Card",
     selector: (row: CardRow) => row.name,
     sortable: true,
     grow: 3,
-  },
-  {
-    name: "Cost",
-    selector: (row: CardRow) => row.cost,
-    sortable: true,
-    width: small,
-    conditionalCellStyles: [
-      {
-        when: (row: CardRow) => true,
-        style: (row: CardRow) => ({
-          color: getScaledColor(row.cost, 0, 585),
-        }),
-      },
-    ],
-  },
-  {
-    name: "Category",
-    selector: (row: CardRow) => row.category,
-    sortable: true,
     conditionalCellStyles: [
       {
         when: (row: CardRow) => true,
@@ -97,22 +76,69 @@ const columns: TableColumn<CardRow>[] = [
     ],
   },
   {
-    name: "Level",
-    selector: (row: CardRow) => (row.category === "Monster" ? row.level : ""),
+    name: "Cost",
+    selector: (row: CardRow) => row.cost,
     sortable: true,
-    width: small,
+    conditionalCellStyles: [
+      {
+        when: (row: CardRow) => true,
+        style: (row: CardRow) => ({
+          color: getScaledColor(row.cost, 0, 585),
+        }),
+      },
+    ],
+  },
+  {
+    name: "Level",
+    selector: (row: CardRow) => {
+      if (row.category !== "Monster") return "";
+      return "*"
+        .repeat(row.level)
+        .replace(/(\*{1,4})(\*{0,2})(\*{0,2})(\*{0,4})/, "$1 $2 $3 $4");
+    },
+    sortable: true,
   },
   {
     name: "ATK",
     selector: (row: CardRow) => (row.category === "Monster" ? row.atk : ""),
     sortable: true,
-    width: small,
+    conditionalCellStyles: [
+      {
+        when: (row: CardRow) => true,
+        style: (row: CardRow) => ({
+          color:
+            row.category === "Monster"
+              ? getScaledColor(row.atk, 0, 3000)
+              : "inherit",
+        }),
+      },
+    ],
+    sortFunction: (a, b) => {
+      const atkA = a.category === "Monster" ? a.atk : -1;
+      const atkB = b.category === "Monster" ? b.atk : -1;
+      return atkA - atkB;
+    },
   },
   {
     name: "DEF",
     selector: (row: CardRow) => (row.category === "Monster" ? row.def : ""),
     sortable: true,
-    width: small,
+    conditionalCellStyles: [
+      {
+        when: (row: CardRow) => true,
+        style: (row: CardRow) => ({
+          color:
+            row.category === "Monster"
+              ? getScaledColor(row.def, 0, 3000)
+              : "inherit",
+        }),
+      },
+    ],
+    sortFunction: (a, b) => {
+      const defA = a.category === "Monster" ? a.def : -1;
+      const defB = b.category === "Monster" ? b.def : -1;
+      return defA - defB;
+    },
   },
   {
     name: "Alignment",
@@ -138,13 +164,12 @@ const columns: TableColumn<CardRow>[] = [
     name: "Code",
     selector: (row: CardRow) => ("code" in row ? row.code : ""),
     sortable: true,
-    width: small,
   },
 ];
 
 const data = cards.map((card) => ({ ...card })) as Card[];
 
-const DuellistList = () => {
+const CardList = () => {
   return (
     <MuiCard>
       <DataTable
@@ -154,12 +179,21 @@ const DuellistList = () => {
         defaultSortFieldId="id"
         sortIcon={<SortIcon />}
         pagination
+        paginationPerPage={50}
+        paginationRowsPerPageOptions={[10, 25, 50, 100, 1000]}
+        dense
         striped
         highlightOnHover
-        paginationRowsPerPageOptions={[10, 25, 50, 100, 1000]}
+        onRowClicked={(row: CardRow) => {
+          const link = `https://yugipedia.com/wiki/${row.name.replace(
+            /\s/,
+            "_"
+          )}_(ROD)`;
+          window.open(link, "_blank");
+        }}
       />
     </MuiCard>
   );
 };
 
-export default DuellistList;
+export default CardList;

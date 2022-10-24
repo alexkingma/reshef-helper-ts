@@ -1,5 +1,4 @@
 interface Duellist {
-  id: number;
   name: string;
   deck: Deck;
   lp: number;
