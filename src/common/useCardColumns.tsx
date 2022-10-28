@@ -8,9 +8,8 @@ const useCardColumns = () => {
     return `hsl(${hue}, 100%, 50%)`;
   };
 
-  const getAlignmentColor = (row: CardRow) => {
-    if (row.category !== "Monster") return;
-    switch (row.alignment) {
+  const getAlignmentColor = (alignment: MonsterCard["alignment"]) => {
+    switch (alignment) {
       case "Fiend":
         return "#BD0096";
       case "Earth":
@@ -33,6 +32,8 @@ const useCardColumns = () => {
         return "#7207B1";
       case "Thunder":
         return "#EFC700";
+      default:
+        return "inherit";
     }
   };
 
@@ -86,73 +87,65 @@ const useCardColumns = () => {
     {
       name: "Level",
       selector: (row: CardRow) => {
-        if (row.category !== "Monster") return "";
         return "*"
-          .repeat(row.level)
+          .repeat("level" in row ? row.level : 0)
           .replace(/(\*{1,4})(\*{0,2})(\*{0,2})(\*{0,4})/, "$1 $2 $3 $4");
       },
       sortable: true,
     },
     {
       name: "ATK",
-      selector: (row: CardRow) => (row.category === "Monster" ? row.atk : ""),
+      selector: (row: CardRow) => ("atk" in row ? row.atk : ""),
       sortable: true,
       conditionalCellStyles: [
         {
           when: (row: CardRow) => true,
           style: (row: CardRow) => ({
-            color:
-              row.category === "Monster"
-                ? getScaledColor(row.atk, 0, 3000)
-                : "inherit",
+            color: "atk" in row ? getScaledColor(row.atk, 0, 3000) : "inherit",
           }),
         },
       ],
       sortFunction: (a, b) => {
-        const atkA = a.category === "Monster" ? a.atk : -1;
-        const atkB = b.category === "Monster" ? b.atk : -1;
+        const atkA = "atk" in a ? a.atk : -1;
+        const atkB = "atk" in b ? b.atk : -1;
         return atkA - atkB;
       },
     },
     {
       name: "DEF",
-      selector: (row: CardRow) => (row.category === "Monster" ? row.def : ""),
+      selector: (row: CardRow) => ("def" in row ? row.def : ""),
+      sortable: true,
+      conditionalCellStyles: [
+        {
+          when: (row: CardRow) => true,
+          style: (row: CardRow) => ({
+            color: "def" in row ? getScaledColor(row.def, 0, 3000) : "inherit",
+          }),
+        },
+      ],
+      sortFunction: (a, b) => {
+        const defA = "def" in a ? a.def : -1;
+        const defB = "def" in b ? b.def : -1;
+        return defA - defB;
+      },
+    },
+    {
+      name: "Alignment",
+      selector: (row: CardRow) => ("alignment" in row ? row.alignment : ""),
       sortable: true,
       conditionalCellStyles: [
         {
           when: (row: CardRow) => true,
           style: (row: CardRow) => ({
             color:
-              row.category === "Monster"
-                ? getScaledColor(row.def, 0, 3000)
-                : "inherit",
-          }),
-        },
-      ],
-      sortFunction: (a, b) => {
-        const defA = a.category === "Monster" ? a.def : -1;
-        const defB = b.category === "Monster" ? b.def : -1;
-        return defA - defB;
-      },
-    },
-    {
-      name: "Alignment",
-      selector: (row: CardRow) =>
-        row.category === "Monster" ? row.alignment : "",
-      sortable: true,
-      conditionalCellStyles: [
-        {
-          when: (row: CardRow) => true,
-          style: (row: CardRow) => ({
-            color: getAlignmentColor(row),
-            paintOrder: "stroke fill",
+              "alignment" in row ? getAlignmentColor(row.alignment) : "inherit",
           }),
         },
       ],
     },
     {
       name: "Type",
-      selector: (row: CardRow) => (row.category === "Monster" ? row.type : ""),
+      selector: (row: CardRow) => ("type" in row ? row.type : ""),
       sortable: true,
     },
     {
