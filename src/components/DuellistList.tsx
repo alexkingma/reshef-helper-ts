@@ -8,6 +8,10 @@ import { default as duellists } from "../assets/duellist_list";
 import { default as cards } from "../assets/card_list";
 import { default as routeDuellists } from "../assets/route_duellists";
 
+interface Props {
+  goToDeck: (name: string) => void;
+}
+
 type DuellistRow = Omit<Duellist, "deck" | "ante"> & {
   id: number;
   dc: string;
@@ -105,7 +109,11 @@ const data = routeDuellists
     };
   });
 
-const DuellistList = () => {
+const DuellistList = ({ goToDeck }: Props) => {
+  const onRowClicked = (row: DuellistRow) => {
+    goToDeck(row.name);
+  };
+
   return (
     <MuiCard>
       <DataTable
@@ -120,6 +128,7 @@ const DuellistList = () => {
         dense
         striped
         highlightOnHover
+        onRowClicked={onRowClicked}
       />
     </MuiCard>
   );
