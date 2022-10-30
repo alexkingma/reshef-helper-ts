@@ -4,9 +4,11 @@ interface Duellist {
   lp: number;
   location: string;
   payout: number;
-  field: string;
+  field: Field;
   ante: CardName[];
 }
+
+type Field = keyof typeof import("../assets/field.json");
 
 type Deck = {
   [card in CardName]?: number;

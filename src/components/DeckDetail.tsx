@@ -3,9 +3,17 @@ import DataTable, { TableColumn } from "react-data-table-component";
 import { Card as MuiCard } from "@mui/material";
 import SortIcon from "@mui/icons-material/ArrowDownward";
 
-import useCardColumns from "../common/useCardColumns";
+import useCardColumns, {
+  getAlignmentColor,
+  getScaledColor,
+} from "../common/useCardColumns";
 import duellists from "../assets/duellist_list";
-import { default as cards } from "../assets/card_list";
+import {
+  getAlignmentThreatMap,
+  getCardData,
+  getDeckCapacity,
+  getNumTributes,
+} from "../common/deck";
 
 type CardRow = Card & {
   qty: number;
@@ -28,10 +36,7 @@ type DataMap = {
 };
 
 const DeckDetail = ({ duellistName }: Props) => {
-  const duellist = duellists.find((d) => d.name === duellistName);
-  if (!duellist) {
-    return <h1>Duellist not found</h1>;
-  }
+  const duellist = duellists.find((d) => d.name === duellistName) as Duellist;
   const { columns } = useCardColumns();
   const newColumns: TableColumn<CardRow>[] = [
     {
@@ -43,53 +48,50 @@ const DeckDetail = ({ duellistName }: Props) => {
     ...(columns as CardRow[]),
   ].filter((col) => !["ID", "Code"].includes(col.name));
 
-  const data = Object.entries(duellist.deck).map(
-    ([cardName, qty]: [string, number]) => {
-      const card = cards.find((card) => card.name === cardName);
-      return { qty, ...(card as Card) };
-    }
-  );
-
-  const dataMap = data.reduce(
-    (map, card) => {
-      switch (card.category) {
-        case "Monster":
-          const numTributes =
-            card.level >= 9 ? 3 : card.level >= 7 ? 2 : card.level >= 5 ? 1 : 0;
-          map[`monster${numTributes}`].push(card);
-          break;
-        case "Magic":
-          map.magic.push(card);
-          break;
-        case "Trap":
-          map.trap.push(card);
-          break;
-        case "Ritual":
-          map.ritual.push(card);
-          break;
-      }
-      const sortedMap = {} as DataMap;
-      Object.entries(map).map(([key, cards]: [string, CardRow[]]) => {
-        sortedMap[key as DataMapKey] = cards.sort((a, b) => {
-          return (
-            a.cost - b.cost ||
-            ("atk" in a && "atk" in b ? a.atk - b.atk : 0) ||
-            ("def" in a && "def" in b ? a.def - b.def : 0)
-          );
+  const dataMap = Object.entries(duellist.deck)
+    .map(([cardName, qty]: [string, number]) => {
+      const card = getCardData(cardName as CardName, duellist.field);
+      return { qty, ...card };
+    })
+    .reduce(
+      (map, card) => {
+        switch (card.category) {
+          case "Monster":
+            map[`monster${getNumTributes(card)}`].push(card);
+            break;
+          case "Magic":
+            map.magic.push(card);
+            break;
+          case "Trap":
+            map.trap.push(card);
+            break;
+          case "Ritual":
+            map.ritual.push(card);
+            break;
+        }
+        const sortedMap = {} as DataMap;
+        Object.entries(map).map(([key, cards]: [string, CardRow[]]) => {
+          sortedMap[key as DataMapKey] = cards.sort((a, b) => {
+            if (a.category !== "Monster" || b.category !== "Monster") {
+              return a.cost - b.cost;
+            }
+            const atkDefA = Math.max(a.atk, a.def);
+            const atkDefB = Math.max(b.atk, b.def);
+            return atkDefA - atkDefB || a.atk - b.atk || a.def - b.def;
+          });
         });
-      });
-      return sortedMap;
-    },
-    {
-      monster0: [],
-      monster1: [],
-      monster2: [],
-      monster3: [],
-      magic: [],
-      trap: [],
-      ritual: [],
-    } as DataMap
-  );
+        return sortedMap;
+      },
+      {
+        monster0: [],
+        monster1: [],
+        monster2: [],
+        monster3: [],
+        magic: [],
+        trap: [],
+        ritual: [],
+      } as DataMap
+    );
 
   const onRowClicked = (row: CardRow) => {
     const link = `https://yugipedia.com/wiki/${row.name.replace(
@@ -108,6 +110,8 @@ const DeckDetail = ({ duellistName }: Props) => {
     { title: "Trap", cards: dataMap.trap },
     { title: "Ritual", cards: dataMap.ritual },
   ];
+
+  const { effectiveDC, rawDC } = getDeckCapacity(duellist.deck);
 
   return (
     <MuiCard>
@@ -131,6 +135,32 @@ const DeckDetail = ({ duellistName }: Props) => {
             </React.Fragment>
           )
       )}
+      <div>Field: {duellist.field}</div>
+      <div>
+        DC: {effectiveDC} {effectiveDC !== rawDC && `(${rawDC})`}
+      </div>
+      <div>
+        Alignment Threat:
+        <table style={{ paddingLeft: "20px" }}>
+          <tbody>
+            {Object.entries(
+              getAlignmentThreatMap(duellist.deck, duellist.field)
+            ).map(([alignment, threat]) => (
+              <tr key={alignment}>
+                <td
+                  style={{ color: getAlignmentColor(alignment as Alignment) }}
+                >
+                  {alignment}
+                </td>
+                <td style={{ color: getScaledColor(threat as number, 0, 50) }}>
+                  {threat as number}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div>Types: ?</div>
     </MuiCard>
   );
 };

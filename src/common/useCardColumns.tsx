@@ -2,54 +2,54 @@ import { TableColumn } from "react-data-table-component/dist/src/DataTable/types
 
 type CardRow = Card;
 
+export const getScaledColor = (val: number, min: number, max: number) => {
+  const hue = Math.floor((val / (max - min)) * 120); // from green to red
+  return `hsl(${hue}, 100%, 50%)`;
+};
+
+export const getAlignmentColor = (alignment: MonsterCard["alignment"]) => {
+  switch (alignment) {
+    case "Fiend":
+      return "#BD0096";
+    case "Earth":
+      return "#C52121";
+    case "Forest":
+      return "#007D2F";
+    case "Water":
+      return "#00C0F8";
+    case "Dark":
+      return "#282828";
+    case "Light":
+      return "#9DA8A6";
+    case "Wind":
+      return "#93EFC2";
+    case "Fire":
+      return "#C52121";
+    case "Dreams":
+      return "#9C94D6";
+    case "Divine":
+      return "#7207B1";
+    case "Thunder":
+      return "#EFC700";
+    default:
+      return "inherit";
+  }
+};
+
+export const getCategoryColor = (row: CardRow) => {
+  switch (row.category) {
+    case "Monster":
+      return row.effect ? "#F36D10" : "inherit";
+    case "Magic":
+      return "#4BE679";
+    case "Trap":
+      return "#D7174E";
+    case "Ritual":
+      return "#273AD5";
+  }
+};
+
 const useCardColumns = () => {
-  const getScaledColor = (val: number, min: number, max: number) => {
-    const hue = Math.floor((val / (max - min)) * 120); // from green to red
-    return `hsl(${hue}, 100%, 50%)`;
-  };
-
-  const getAlignmentColor = (alignment: MonsterCard["alignment"]) => {
-    switch (alignment) {
-      case "Fiend":
-        return "#BD0096";
-      case "Earth":
-        return "#C52121";
-      case "Forest":
-        return "#007D2F";
-      case "Water":
-        return "#00C0F8";
-      case "Dark":
-        return "#282828";
-      case "Light":
-        return "#9DA8A6";
-      case "Wind":
-        return "#93EFC2";
-      case "Fire":
-        return "#C52121";
-      case "Dreams":
-        return "#9C94D6";
-      case "Divine":
-        return "#7207B1";
-      case "Thunder":
-        return "#EFC700";
-      default:
-        return "inherit";
-    }
-  };
-
-  const getCategoryColor = (row: CardRow) => {
-    switch (row.category) {
-      case "Monster":
-        return row.effect ? "#F36D10" : "inherit";
-      case "Magic":
-        return "#4BE679";
-      case "Trap":
-        return "#D7174E";
-      case "Ritual":
-        return "#273AD5";
-    }
-  };
-
   const columns: TableColumn<CardRow>[] = [
     {
       name: "ID",

@@ -1,4 +1,4 @@
-const duellists = [
+const duellists: Duellist[] = [
   {
     name: "Tristan Taylor",
     deck: {
