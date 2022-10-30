@@ -68,7 +68,17 @@ const DeckDetail = ({ duellistName }: Props) => {
           map.ritual.push(card);
           break;
       }
-      return map;
+      const sortedMap = {} as DataMap;
+      Object.entries(map).map(([key, cards]: [string, CardRow[]]) => {
+        sortedMap[key as DataMapKey] = cards.sort((a, b) => {
+          return (
+            a.cost - b.cost ||
+            ("atk" in a && "atk" in b ? a.atk - b.atk : 0) ||
+            ("def" in a && "def" in b ? a.def - b.def : 0)
+          );
+        });
+      });
+      return sortedMap;
     },
     {
       monster0: [],
