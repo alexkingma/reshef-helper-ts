@@ -8,12 +8,8 @@ import useCardColumns, {
   getScaledColor,
 } from "../common/useCardColumns";
 import duellists from "../assets/duellist_list";
-import {
-  getAlignmentThreatMap,
-  getCardData,
-  getDeckCapacity,
-  getNumTributes,
-} from "../common/deck";
+import { getDeck, getDeckCapacity, getNumTributes } from "../common/deck";
+import { getAlignmentThreatMap } from "../common/threat";
 
 type CardRow = Card & {
   qty: number;
@@ -48,50 +44,34 @@ const DeckDetail = ({ duellistName }: Props) => {
     ...(columns as CardRow[]),
   ].filter((col) => !["ID", "Code"].includes(col.name));
 
-  const dataMap = Object.entries(duellist.deck)
-    .map(([cardName, qty]: [string, number]) => {
-      const card = getCardData(cardName as CardName, duellist.field);
-      return { qty, ...card };
-    })
-    .reduce(
-      (map, card) => {
-        switch (card.category) {
-          case "Monster":
-            map[`monster${getNumTributes(card)}`].push(card);
-            break;
-          case "Magic":
-            map.magic.push(card);
-            break;
-          case "Trap":
-            map.trap.push(card);
-            break;
-          case "Ritual":
-            map.ritual.push(card);
-            break;
-        }
-        const sortedMap = {} as DataMap;
-        Object.entries(map).map(([key, cards]: [string, CardRow[]]) => {
-          sortedMap[key as DataMapKey] = cards.sort((a, b) => {
-            if (a.category !== "Monster" || b.category !== "Monster") {
-              return a.cost - b.cost;
-            }
-            const atkDefA = Math.max(a.atk, a.def);
-            const atkDefB = Math.max(b.atk, b.def);
-            return atkDefA - atkDefB || a.atk - b.atk || a.def - b.def;
-          });
-        });
-        return sortedMap;
-      },
-      {
-        monster0: [],
-        monster1: [],
-        monster2: [],
-        monster3: [],
-        magic: [],
-        trap: [],
-        ritual: [],
-      } as DataMap
-    );
+  const dataMap = getDeck(duellist.deck, duellist.field).reduce(
+    (map, card) => {
+      switch (card.category) {
+        case "Monster":
+          map[`monster${getNumTributes(card)}`].push(card);
+          break;
+        case "Magic":
+          map.magic.push(card);
+          break;
+        case "Trap":
+          map.trap.push(card);
+          break;
+        case "Ritual":
+          map.ritual.push(card);
+          break;
+      }
+      return map;
+    },
+    {
+      monster0: [],
+      monster1: [],
+      monster2: [],
+      monster3: [],
+      magic: [],
+      trap: [],
+      ritual: [],
+    } as DataMap
+  );
 
   const onRowClicked = (row: CardRow) => {
     const link = `https://yugipedia.com/wiki/${row.name.replace(
