@@ -1,5 +1,5 @@
 import { TableColumn } from "react-data-table-component/dist/src/DataTable/types";
-import { getAverageAnteCost, getAverageCardCost } from "./deck";
+import { getAverageAnteCost } from "./deck";
 import { getScaledColor } from "./useCardColumns";
 
 export type DuellistRow = Omit<Duellist, "deck"> & {

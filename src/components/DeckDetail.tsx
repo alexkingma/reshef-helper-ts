@@ -1,7 +1,7 @@
 import React from "react";
 import DataTable, { TableColumn } from "react-data-table-component";
 import { Card as MuiCard } from "@mui/material";
-import SortIcon from "@mui/icons-material/ArrowDownward";
+import { ArrowDownward } from "@mui/icons-material";
 
 import useCardColumns, {
   getAlignmentColor,
@@ -115,7 +115,7 @@ const DeckDetail = ({ duellistName }: Props) => {
                 columns={newColumns}
                 data={table.cards}
                 defaultSortFieldId="id"
-                sortIcon={<SortIcon />}
+                sortIcon={<ArrowDownward />}
                 dense
                 striped
                 highlightOnHover

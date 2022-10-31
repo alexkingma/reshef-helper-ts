@@ -1,7 +1,7 @@
 import React from "react";
 import DataTable from "react-data-table-component";
 import { Card as MuiCard } from "@mui/material";
-import SortIcon from "@mui/icons-material/ArrowDownward";
+import { ArrowDownward } from "@mui/icons-material";
 
 import { default as cards } from "../assets/cards";
 import useCardColumns from "../common/useCardColumns";
@@ -26,7 +26,7 @@ const CardList = () => {
         columns={columns}
         data={data}
         defaultSortFieldId="id"
-        sortIcon={<SortIcon />}
+        sortIcon={<ArrowDownward />}
         pagination
         paginationPerPage={50}
         paginationRowsPerPageOptions={[10, 25, 50, 100, 1000]}
