@@ -28,7 +28,8 @@ const useDuellistColumns = () => {
     },
     {
       name: "Ante Avg",
-      selector: (row: DuellistRow) => getAverageAnteCost(row.ante).rawAvg,
+      selector: (row: DuellistRow) =>
+        row.ante.length ? getAverageAnteCost(row.ante).rawAvg : "",
       sortable: true,
       conditionalCellStyles: [
         {

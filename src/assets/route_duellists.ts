@@ -1,4 +1,6 @@
 const routeDuellists = [
+  "Player (Initial Deck)",
+  "Player (Initial Trunk)",
   "Conductor (Turnstyles)",
   "Conductor (Carriage)",
   "PaniK 1",
