@@ -3015,6 +3015,7 @@ const cards = [
     level: 12,
     atk: 4000,
     def: 4000,
+    code: -1,
   },
   {
     id: 235,
@@ -3066,6 +3067,7 @@ const cards = [
     level: 12,
     atk: 4000,
     def: 4000,
+    code: -1,
   },
   {
     id: 239,
@@ -3091,6 +3093,7 @@ const cards = [
     level: 12,
     atk: 4000,
     def: 4000,
+    code: -1,
   },
   {
     id: 241,
@@ -3831,6 +3834,7 @@ const cards = [
     level: 12,
     atk: 0,
     def: 0,
+    code: -1,
   },
   {
     id: 298,

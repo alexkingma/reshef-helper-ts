@@ -148,7 +148,7 @@ const useCardColumns = () => {
     },
     {
       name: "Code",
-      selector: (row: Card) => ("code" in row ? row.code : ""),
+      selector: (row: Card) => (row.code !== -1 ? row.code : ""),
       sortable: true,
     },
   ];

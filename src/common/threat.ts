@@ -6,7 +6,7 @@ type DeckTributeAtkDefMap = {
 
 const DEF_MULTIPLIER = 0.8; // DEF is less threatening than ATK
 
-const getTributeThreatMultiplier = (card: MonsterCard | GodCard) => {
+const getTributeThreatMultiplier = (card: MonsterCard) => {
   const TRIBUTE_THREAT_MULTIPLIER_MAP = {
     // 0-tribute monsters are more threat-relevant than 1/2/3-tribute monsters
     0: 1,

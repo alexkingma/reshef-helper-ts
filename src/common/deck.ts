@@ -48,9 +48,7 @@ export const getAverageAnteCost = (cardNames: CardName[]) => {
   return getAverageCardCost(tempDeck);
 };
 
-export const getNumTributes = ({
-  level,
-}: MonsterCard | GodCard): NumTributes => {
+export const getNumTributes = ({ level }: MonsterCard): NumTributes => {
   return level >= 9 ? 3 : level >= 7 ? 2 : level >= 5 ? 1 : 0;
 };
 

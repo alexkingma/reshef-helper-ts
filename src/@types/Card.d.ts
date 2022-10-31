@@ -35,7 +35,7 @@ type Alignment =
   | "Divine"
   | "Thunder";
 
-type Card = MonsterCard | SpellOrTrapOrRitualCard | GodCard;
+type Card = MonsterCard | SpellOrTrapOrRitualCard;
 
 interface BaseCard {
   id: number;
@@ -54,8 +54,6 @@ type MonsterCard = BaseCard & {
   def: number;
   code: number;
 };
-
-type GodCard = Omit<MonsterCard, "code">;
 
 type SpellOrTrapOrRitualCard = BaseCard & {
   category: "Magic" | "Trap" | "Ritual";
