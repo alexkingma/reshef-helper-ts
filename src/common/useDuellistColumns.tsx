@@ -1,7 +1,8 @@
 import { TableColumn } from "react-data-table-component/dist/src/DataTable/types";
+import { getAverageAnteCost, getAverageCardCost } from "./deck";
 import { getScaledColor } from "./useCardColumns";
 
-export type DuellistRow = Omit<Duellist, "deck" | "ante"> & {
+export type DuellistRow = Omit<Duellist, "deck"> & {
   id: number;
   dc: string;
   numCards: number;
@@ -23,17 +24,17 @@ const useDuellistColumns = () => {
       name: "Opponent",
       selector: (row: DuellistRow) => row.name,
       sortable: true,
-      grow: 2,
+      grow: 3,
     },
     {
-      name: "Cards",
-      selector: (row: DuellistRow) => row.numCards,
+      name: "Ante Avg",
+      selector: (row: DuellistRow) => getAverageAnteCost(row.ante).rawAvg,
       sortable: true,
       conditionalCellStyles: [
         {
           when: (row: DuellistRow) => true,
           style: (row: DuellistRow) => ({
-            color: row.numCards !== 40 ? "red" : "inherit",
+            color: getScaledColor(getAverageAnteCost(row.ante).rawAvg, 0, 400),
           }),
         },
       ],

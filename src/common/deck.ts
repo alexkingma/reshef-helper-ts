@@ -31,6 +31,23 @@ export const getDeckCapacity = (deck: Deck) => {
   return { effectiveDC, rawDC };
 };
 
+export const getAverageCardCost = (deck: Deck) => {
+  const { effectiveDC, rawDC } = getDeckCapacity(deck);
+  const numCards = Object.values(deck).reduce((sum, qty) => sum + qty, 0);
+  return {
+    effectiveAvg: Math.round(effectiveDC / numCards),
+    rawAvg: Math.round(rawDC / numCards),
+  };
+};
+
+export const getAverageAnteCost = (cardNames: CardName[]) => {
+  const tempDeck = cardNames.reduce(
+    (deck, cardName: CardName) => ({ ...deck, [cardName]: 1 }),
+    {} as Deck
+  );
+  return getAverageCardCost(tempDeck);
+};
+
 export const getNumTributes = ({
   level,
 }: MonsterCard | GodCard): NumTributes => {
