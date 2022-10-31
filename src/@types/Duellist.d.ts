@@ -8,7 +8,7 @@ interface Duellist {
   ante: CardName[];
 }
 
-type Field = keyof typeof import("../assets/field.json");
+type Field = keyof typeof import("../assets/fields.json");
 
 type Deck = {
   [card in CardName]?: number;

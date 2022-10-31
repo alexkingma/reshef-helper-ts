@@ -1,5 +1,5 @@
-import { default as cards } from "../assets/card_list";
-import { default as fields } from "../assets/field.json";
+import { default as cards } from "../assets/cards";
+import { default as fields } from "../assets/fields.json";
 import { getCardThreatMap } from "./threat";
 
 export type NumTributes = 0 | 1 | 2 | 3;

@@ -7,7 +7,7 @@ import useCardColumns, {
   getAlignmentColor,
   getScaledColor,
 } from "../common/useCardColumns";
-import duellists from "../assets/duellist_list";
+import duellists from "../assets/duellists";
 import { getDeck, getDeckCapacity, getNumTributes } from "../common/deck";
 import { getAlignmentThreatMap } from "../common/threat";
 

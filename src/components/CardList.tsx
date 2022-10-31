@@ -3,7 +3,7 @@ import DataTable from "react-data-table-component";
 import { Card as MuiCard } from "@mui/material";
 import SortIcon from "@mui/icons-material/ArrowDownward";
 
-import { default as cards } from "../assets/card_list";
+import { default as cards } from "../assets/cards";
 import useCardColumns from "../common/useCardColumns";
 
 const data = cards.map((card) => ({ ...card })) as Card[];
