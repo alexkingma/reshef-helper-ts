@@ -4,25 +4,25 @@ const routeDuellistNames: Duellist["name"][] = [
   "Conductor (Turnstyles)",
   "Conductor (Carriage)",
   "PaniK 1",
-  "Millennium Guardian (Egyptian Exhibition)",
+  "Millennium Guardian 1",
   "Duel Computer (Novice)",
   "Puppeteer of Doom",
   "Jean-Claude Magnum 1",
-  "Millennium Guardian (Domino Pier)",
+  "Millennium Guardian 2",
   "Bonz 1",
-  "Millennium Guardian (Italy)",
+  "Millennium Guardian 3",
   "Para 1",
   "Para 2",
   "Dox 1",
-  "Millennium Guardian (China)",
+  "Millennium Guardian 4",
   "Jinzo",
-  "Rex Raptor 1",
-  "Millennium Guardian (Canada)",
+  "Rex 1",
+  "Millennium Guardian 5",
   "Mimic of Doom 1",
   "Rare Hunter 1",
   "Ghoul at Bonz",
-  "Ghoul right of Rex (Canada)",
-  "Ghoul left of Rex (Canada)",
+  "Ghoul right of Rex",
+  "Ghoul left of Rex",
   "Strings",
   "Lumis",
   "Umbra",
@@ -49,21 +49,21 @@ const routeDuellistNames: Duellist["name"][] = [
   "Para 3",
   "Dox 2",
   "Bonz 3",
-  "Rex Raptor 3",
-  "Weevil Underwood 3",
-  "Mako Tsunami 3",
-  "Mai Valentine 3",
-  "Espa Roba 2",
+  "Rex 3",
+  "Weevil 3",
+  "Mako 3",
+  "Mai 3",
+  "Espa 2",
   "Bonz (Imposter)",
-  "Rex Raptor (Imposter)",
-  "Weevil Underwood (Imposter)",
-  "Mako Tsunami (Imposter)",
-  "Mai Valentine (Imposter)",
-  "Espa Roba (Imposter)",
+  "Rex (Imposter)",
+  "Weevil (Imposter)",
+  "Mako (Imposter)",
+  "Mai (Imposter)",
+  "Espa (Imposter)",
   "Dark Mokuba",
   "Seto Kaiba",
   "Sol Chevalsky",
-  "Reshef the Dark Being",
+  "Reshef",
 ];
 
 const duellists: Duellist[] = [
@@ -1014,7 +1014,7 @@ const duellists: Duellist[] = [
     ],
   },
   {
-    name: "Reshef the Dark Being",
+    name: "Reshef",
     deck: {
       "Vorse Raider": 3,
       Mechanicalchaser: 3,
@@ -1737,7 +1737,7 @@ const duellists: Duellist[] = [
     ],
   },
   {
-    name: "Rex Raptor 1",
+    name: "Rex 1",
     deck: {
       "Lesser Dragon": 3,
       "Stone D.": 1,
@@ -1775,7 +1775,7 @@ const duellists: Duellist[] = [
     ],
   },
   {
-    name: "Rex Raptor 2",
+    name: "Rex 2",
     deck: {
       "Sword Arm of Dragon": 3,
       Uraby: 2,
@@ -1817,7 +1817,7 @@ const duellists: Duellist[] = [
     ],
   },
   {
-    name: "Rex Raptor 3",
+    name: "Rex 3",
     deck: {
       "Sword Arm of Dragon": 2,
       "Crawling Dragon #2": 3,
@@ -1865,7 +1865,7 @@ const duellists: Duellist[] = [
     ],
   },
   {
-    name: "Rex Raptor (Imposter)",
+    name: "Rex (Imposter)",
     deck: {
       "Darkfire Dragon": 3,
       "The Statue of Easter Island": 3,
@@ -1904,7 +1904,7 @@ const duellists: Duellist[] = [
     ],
   },
   {
-    name: "Weevil Underwood 1",
+    name: "Weevil 1",
     deck: {
       "Parasite Paracide": 1,
       "Spiked Snail": 2,
@@ -1938,7 +1938,7 @@ const duellists: Duellist[] = [
     ante: [],
   },
   {
-    name: "Weevil Underwood 2",
+    name: "Weevil 2",
     deck: {
       "Great Moth": 1,
       Gokibore: 2,
@@ -1969,7 +1969,7 @@ const duellists: Duellist[] = [
     ante: [],
   },
   {
-    name: "Weevil Underwood 3",
+    name: "Weevil 3",
     deck: {
       "Larvae Moth": 2,
       "Cocoon of Evolution": 2,
@@ -2014,7 +2014,7 @@ const duellists: Duellist[] = [
     ],
   },
   {
-    name: "Weevil Underwood (Imposter)",
+    name: "Weevil (Imposter)",
     deck: {
       "Flying Kamakiri #1": 3,
       "Kwagar Hercules": 3,
@@ -2053,7 +2053,7 @@ const duellists: Duellist[] = [
     ],
   },
   {
-    name: "Mako Tsunami 1",
+    name: "Mako 1",
     deck: {
       "Sea Kamen": 3,
       "Ice Water": 3,
@@ -2097,7 +2097,7 @@ const duellists: Duellist[] = [
     ],
   },
   {
-    name: "Mako Tsunami 2",
+    name: "Mako 2",
     deck: {
       "Turtle Bird": 1,
       "The Legendary Fisherman": 1,
@@ -2145,7 +2145,7 @@ const duellists: Duellist[] = [
     ],
   },
   {
-    name: "Mako Tsunami 3",
+    name: "Mako 3",
     deck: {
       "Giant Red Seasnake": 2,
       "Fortress Whale": 1,
@@ -2196,7 +2196,7 @@ const duellists: Duellist[] = [
     ],
   },
   {
-    name: "Mako Tsunami (Imposter)",
+    name: "Mako (Imposter)",
     deck: {
       "Crazy Fish": 3,
       "Amazon of the Seas": 3,
@@ -2235,7 +2235,7 @@ const duellists: Duellist[] = [
     ],
   },
   {
-    name: "Mai Valentine 1",
+    name: "Mai 1",
     deck: {
       "Harpie Lady": 3,
       Mavelus: 3,
@@ -2265,7 +2265,7 @@ const duellists: Duellist[] = [
     ante: [],
   },
   {
-    name: "Mai Valentine 2",
+    name: "Mai 2",
     deck: {
       "Sonic Bird": 2,
       "Dragoness the Wicked Knight": 2,
@@ -2299,7 +2299,7 @@ const duellists: Duellist[] = [
     ante: [],
   },
   {
-    name: "Mai Valentine 3",
+    name: "Mai 3",
     deck: {
       "Skull Red Bird": 2,
       "Crimson Sunbird": 2,
@@ -2343,7 +2343,7 @@ const duellists: Duellist[] = [
     ],
   },
   {
-    name: "Mai Valentine (Imposter)",
+    name: "Mai (Imposter)",
     deck: {
       "Skull Red Bird": 3,
       Mavelus: 3,
@@ -2382,7 +2382,7 @@ const duellists: Duellist[] = [
     ],
   },
   {
-    name: "Espa Roba 1",
+    name: "Espa 1",
     deck: {
       "Cyber Raider": 3,
       "Oscillo Hero": 3,
@@ -2424,7 +2424,7 @@ const duellists: Duellist[] = [
     ],
   },
   {
-    name: "Espa Roba 2",
+    name: "Espa 2",
     deck: {
       "Axe Raider": 3,
       "Cyber Raider": 3,
@@ -2466,7 +2466,7 @@ const duellists: Duellist[] = [
     ],
   },
   {
-    name: "Espa Roba (Imposter)",
+    name: "Espa (Imposter)",
     deck: {
       "Ground Attacker Bugroth": 3,
       "Guardian of the Throne Room": 3,
@@ -4511,7 +4511,7 @@ const duellists: Duellist[] = [
     ante: [],
   },
   {
-    name: "Ghoul left of Rex (Canada)",
+    name: "Ghoul left of Rex",
     deck: {
       "Horn Imp": 3,
       Solitude: 3,
@@ -4553,7 +4553,7 @@ const duellists: Duellist[] = [
     ],
   },
   {
-    name: "Ghoul right of Rex (Canada)",
+    name: "Ghoul right of Rex",
     deck: {
       "The Judgement Hand": 3,
       Holograh: 3,
@@ -5047,7 +5047,7 @@ const duellists: Duellist[] = [
     ante: [],
   },
   {
-    name: "Millennium Guardian (Egyptian Exhibition)",
+    name: "Millennium Guardian 1",
     deck: {
       "Mystical Sheep #2": 3,
       LaMoon: 3,
@@ -5090,7 +5090,7 @@ const duellists: Duellist[] = [
     ],
   },
   {
-    name: "Millennium Guardian (Domino Pier)",
+    name: "Millennium Guardian 2",
     deck: {
       Morinphen: 1,
       "Hiro's Shadow Scout": 3,
@@ -5137,7 +5137,7 @@ const duellists: Duellist[] = [
     ],
   },
   {
-    name: "Millennium Guardian (Italy)",
+    name: "Millennium Guardian 3",
     deck: {
       "Wicked Dragon with the Ersatz Head": 3,
       "Goddess of Whim": 3,
@@ -5180,7 +5180,7 @@ const duellists: Duellist[] = [
     ],
   },
   {
-    name: "Millennium Guardian (China)",
+    name: "Millennium Guardian 4",
     deck: {
       "Karate Man": 3,
       "Flame Manipulator": 3,
@@ -5223,7 +5223,7 @@ const duellists: Duellist[] = [
     ],
   },
   {
-    name: "Millennium Guardian (Canada)",
+    name: "Millennium Guardian 5",
     deck: {
       "Mystical Sheep #1": 3,
       "Nekogal #1": 2,
