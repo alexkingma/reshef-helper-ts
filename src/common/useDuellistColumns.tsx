@@ -1,9 +1,14 @@
 import { TableColumn } from "react-data-table-component/dist/src/DataTable/types";
+import { getScaledColor } from "./useCardColumns";
 
 export type DuellistRow = Omit<Duellist, "deck" | "ante"> & {
   id: number;
   dc: string;
   numCards: number;
+};
+
+const dcToNumber = (dc: string) => {
+  return parseInt(dc.split("(")[0].replace(",", ""), 10);
 };
 
 const useDuellistColumns = () => {
@@ -24,16 +29,30 @@ const useDuellistColumns = () => {
       name: "Cards",
       selector: (row: DuellistRow) => row.numCards,
       sortable: true,
+      conditionalCellStyles: [
+        {
+          when: (row: DuellistRow) => true,
+          style: (row: DuellistRow) => ({
+            color: row.numCards !== 40 ? "red" : "inherit",
+          }),
+        },
+      ],
     },
     {
       name: "DC",
       selector: (row: DuellistRow) => row.dc,
       sortable: true,
       sortFunction: (a, b) => {
-        const dcA = parseInt(a.dc.split("(")[0].replace(",", ""), 10);
-        const dcB = parseInt(b.dc.split("(")[0].replace(",", ""), 10);
-        return dcA - dcB;
+        return dcToNumber(a.dc) - dcToNumber(b.dc);
       },
+      conditionalCellStyles: [
+        {
+          when: (row: DuellistRow) => true,
+          style: (row: DuellistRow) => ({
+            color: getScaledColor(dcToNumber(row.dc), 1500, 6000),
+          }),
+        },
+      ],
     },
     {
       name: "Field",
@@ -45,6 +64,14 @@ const useDuellistColumns = () => {
       selector: (row: DuellistRow) => row.lp,
       sortable: true,
       format: (row: DuellistRow) => row.lp.toLocaleString(),
+      conditionalCellStyles: [
+        {
+          when: (row: DuellistRow) => true,
+          style: (row: DuellistRow) => ({
+            color: getScaledColor(row.lp, 5000, 20000),
+          }),
+        },
+      ],
     },
     {
       name: "$$",
