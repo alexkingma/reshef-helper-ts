@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navButton {
+  flex-basis: 250px;
+}
+
+.subheader {
+  display: flex;
+  justify-content: center;
+}

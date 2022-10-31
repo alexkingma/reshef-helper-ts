@@ -3,6 +3,7 @@ import { Button, Typography } from "@mui/material";
 import { ArrowLeft, ArrowRight } from "@mui/icons-material";
 
 import duellists from "../assets/duellists";
+import "./DeckHeader.css";
 
 interface Props {
   duellist: Duellist;
@@ -39,13 +40,14 @@ const DeckHeader = ({
           justifyContent: "space-between",
           alignItems: "center",
         }}
+        className="container"
       >
         <Button
           variant="outlined"
           startIcon={<ArrowLeft />}
           onClick={onPrevClick}
           disabled={isFirst}
-          style={{ flexBasis: "250px" }}
+          className="navButton"
         >
           {getName(duellistIdx - 1)}
         </Button>
@@ -57,15 +59,15 @@ const DeckHeader = ({
           endIcon={<ArrowRight />}
           onClick={onNextClick}
           disabled={isLast}
-          style={{ flexBasis: "250px" }}
+          className="navButton"
         >
           {getName(duellistIdx + 1)}
         </Button>
       </div>
-      <div style={{ display: "flex", justifyContent: "center" }}>
+      <div className="subheader">
         {/* TODO: use DuellistRow instead of raw text */}
-        {duellist.field}; DC {effectiveDC}{" "}
-        {effectiveDC !== rawDC && `(${rawDC})`}
+        {duellist.field}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{duellist.lp}{" "}
+        LP&nbsp;&nbsp; &nbsp; {effectiveDC} DC
       </div>
     </>
   );
