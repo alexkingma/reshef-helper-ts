@@ -1,4 +1,7 @@
 import React from "react";
+import { Button, Typography } from "@mui/material";
+import { ArrowLeft, ArrowRight } from "@mui/icons-material";
+
 import duellists from "../assets/duellists";
 
 interface Props {
@@ -16,19 +19,48 @@ const DeckHeader = ({
   onPrevClick,
   onNextClick,
 }: Props) => {
-  const isFirst = duellists[0].name === duellist.name;
-  const isLast = duellists[duellists.length - 1].name === duellist.name;
+  const duellistIdx = duellists.findIndex((d) => d.name === duellist.name);
+  const numDuellists = duellists.length;
+  const isFirst = duellistIdx === 0;
+  const isLast = duellistIdx === duellists.length - 1;
+
+  const getName = (duellistIdx: number) => {
+    if (duellistIdx >= numDuellists || duellistIdx < 0) {
+      return "";
+    }
+    return duellists[duellistIdx].name;
+  };
 
   return (
     <>
-      <div style={{ display: "flex", justifyContent: "center" }}>
-        <button onClick={onPrevClick} disabled={isFirst}>
-          Prev
-        </button>
-        {duellist.name}
-        <button onClick={onNextClick} disabled={isLast}>
-          Next
-        </button>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
+        <Button
+          variant="outlined"
+          startIcon={<ArrowLeft />}
+          onClick={onPrevClick}
+          disabled={isFirst}
+          style={{ flexBasis: "250px" }}
+        >
+          {getName(duellistIdx - 1)}
+        </Button>
+        <Typography variant="h5">
+          {getName(duellistIdx)} ({duellistIdx + 1}/{numDuellists})
+        </Typography>
+        <Button
+          variant="outlined"
+          endIcon={<ArrowRight />}
+          onClick={onNextClick}
+          disabled={isLast}
+          style={{ flexBasis: "250px" }}
+        >
+          {getName(duellistIdx + 1)}
+        </Button>
       </div>
       <div style={{ display: "flex", justifyContent: "center" }}>
         {/* TODO: use DuellistRow instead of raw text */}
