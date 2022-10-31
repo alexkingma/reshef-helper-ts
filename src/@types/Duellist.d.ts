@@ -13,3 +13,8 @@ type Field = keyof typeof import("../assets/field.json");
 type Deck = {
   [card in CardName]?: number;
 };
+
+type DeckCard = Card & {
+  qty: number;
+  threat: number;
+};

@@ -1,13 +1,11 @@
 import { TableColumn } from "react-data-table-component/dist/src/DataTable/types";
 
-type CardRow = Card;
-
 export const getScaledColor = (val: number, min: number, max: number) => {
   const hue = Math.floor((val / (max - min)) * 120); // from green to red
   return `hsl(${hue}, 100%, 50%)`;
 };
 
-export const getAlignmentColor = (alignment: MonsterCard["alignment"]) => {
+export const getAlignmentColor = (alignment: Alignment) => {
   switch (alignment) {
     case "Fiend":
       return "#BD0096";
@@ -36,7 +34,7 @@ export const getAlignmentColor = (alignment: MonsterCard["alignment"]) => {
   }
 };
 
-export const getCategoryColor = (row: CardRow) => {
+export const getCategoryColor = (row: Card) => {
   switch (row.category) {
     case "Monster":
       return row.effect ? "#F36D10" : "inherit";
@@ -50,22 +48,22 @@ export const getCategoryColor = (row: CardRow) => {
 };
 
 const useCardColumns = () => {
-  const columns: TableColumn<CardRow>[] = [
+  const columns: TableColumn<Card>[] = [
     {
       name: "ID",
-      selector: (row: CardRow) => row.id,
+      selector: (row: Card) => row.id,
       sortable: true,
       width: "70px",
     },
     {
       name: "Card",
-      selector: (row: CardRow) => row.name,
+      selector: (row: Card) => row.name,
       sortable: true,
       grow: 3,
       conditionalCellStyles: [
         {
-          when: (row: CardRow) => true,
-          style: (row: CardRow) => ({
+          when: (row: Card) => true,
+          style: (row: Card) => ({
             color: getCategoryColor(row),
           }),
         },
@@ -73,12 +71,12 @@ const useCardColumns = () => {
     },
     {
       name: "Cost",
-      selector: (row: CardRow) => row.cost,
+      selector: (row: Card) => row.cost,
       sortable: true,
       conditionalCellStyles: [
         {
-          when: (row: CardRow) => true,
-          style: (row: CardRow) => ({
+          when: (row: Card) => true,
+          style: (row: Card) => ({
             color: getScaledColor(row.cost, 0, 585),
           }),
         },
@@ -86,7 +84,7 @@ const useCardColumns = () => {
     },
     {
       name: "Level",
-      selector: (row: CardRow) => {
+      selector: (row: Card) => {
         return "*"
           .repeat("level" in row ? row.level : 0)
           .replace(/(\*{1,4})(\*{0,2})(\*{0,2})(\*{0,4})/, "$1 $2 $3 $4");
@@ -95,12 +93,12 @@ const useCardColumns = () => {
     },
     {
       name: "ATK",
-      selector: (row: CardRow) => ("atk" in row ? row.atk : ""),
+      selector: (row: Card) => ("atk" in row ? row.atk : ""),
       sortable: true,
       conditionalCellStyles: [
         {
-          when: (row: CardRow) => true,
-          style: (row: CardRow) => ({
+          when: (row: Card) => true,
+          style: (row: Card) => ({
             color: "atk" in row ? getScaledColor(row.atk, 0, 3000) : "inherit",
           }),
         },
@@ -113,12 +111,12 @@ const useCardColumns = () => {
     },
     {
       name: "DEF",
-      selector: (row: CardRow) => ("def" in row ? row.def : ""),
+      selector: (row: Card) => ("def" in row ? row.def : ""),
       sortable: true,
       conditionalCellStyles: [
         {
-          when: (row: CardRow) => true,
-          style: (row: CardRow) => ({
+          when: (row: Card) => true,
+          style: (row: Card) => ({
             color: "def" in row ? getScaledColor(row.def, 0, 3000) : "inherit",
           }),
         },
@@ -131,12 +129,12 @@ const useCardColumns = () => {
     },
     {
       name: "Alignment",
-      selector: (row: CardRow) => ("alignment" in row ? row.alignment : ""),
+      selector: (row: Card) => ("alignment" in row ? row.alignment : ""),
       sortable: true,
       conditionalCellStyles: [
         {
-          when: (row: CardRow) => true,
-          style: (row: CardRow) => ({
+          when: (row: Card) => true,
+          style: (row: Card) => ({
             color:
               "alignment" in row ? getAlignmentColor(row.alignment) : "inherit",
           }),
@@ -145,12 +143,12 @@ const useCardColumns = () => {
     },
     {
       name: "Type",
-      selector: (row: CardRow) => ("type" in row ? row.type : ""),
+      selector: (row: Card) => ("type" in row ? row.type : ""),
       sortable: true,
     },
     {
       name: "Code",
-      selector: (row: CardRow) => ("code" in row ? row.code : ""),
+      selector: (row: Card) => ("code" in row ? row.code : ""),
       sortable: true,
     },
   ];

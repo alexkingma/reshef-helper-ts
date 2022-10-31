@@ -11,10 +11,6 @@ import duellists from "../assets/duellist_list";
 import { getDeck, getDeckCapacity, getNumTributes } from "../common/deck";
 import { getAlignmentThreatMap } from "../common/threat";
 
-type CardRow = Card & {
-  qty: number;
-};
-
 interface Props {
   duellistName: string;
 }
@@ -28,23 +24,38 @@ type DataMapKey =
   | "trap"
   | "ritual";
 type DataMap = {
-  [key in DataMapKey]: CardRow[];
+  [key in DataMapKey]: DeckCard[];
 };
 
 const DeckDetail = ({ duellistName }: Props) => {
   const duellist = duellists.find((d) => d.name === duellistName) as Duellist;
   const { columns } = useCardColumns();
-  const newColumns: TableColumn<CardRow>[] = [
+  const newColumns: TableColumn<DeckCard>[] = [
     {
       name: "Qty",
-      selector: (row: CardRow) => row.qty,
+      selector: (row: DeckCard) => row.qty,
       sortable: true,
       width: "70px",
     },
-    ...(columns as CardRow[]),
+    {
+      name: "Threat",
+      selector: (row: DeckCard) => row.threat,
+      sortable: true,
+      width: "90px",
+      conditionalCellStyles: [
+        {
+          when: (row: DeckCard) => true,
+          style: (row: DeckCard) => ({
+            color: getScaledColor(row.threat, 0, 20),
+          }),
+        },
+      ],
+    },
+    ...(columns as DeckCard[]),
   ].filter((col) => !["ID", "Code"].includes(col.name));
 
-  const dataMap = getDeck(duellist.deck, duellist.field).reduce(
+  const deckCards = getDeck(duellist.deck, duellist.field);
+  const dataMap = deckCards.reduce(
     (map, card) => {
       switch (card.category) {
         case "Monster":
@@ -73,7 +84,7 @@ const DeckDetail = ({ duellistName }: Props) => {
     } as DataMap
   );
 
-  const onRowClicked = (row: CardRow) => {
+  const onRowClicked = (row: DeckCard) => {
     const link = `https://yugipedia.com/wiki/${row.name.replace(
       /\s/,
       "_"
@@ -123,20 +134,22 @@ const DeckDetail = ({ duellistName }: Props) => {
         Alignment Threat:
         <table style={{ paddingLeft: "20px" }}>
           <tbody>
-            {Object.entries(
-              getAlignmentThreatMap(duellist.deck, duellist.field)
-            ).map(([alignment, threat]) => (
-              <tr key={alignment}>
-                <td
-                  style={{ color: getAlignmentColor(alignment as Alignment) }}
-                >
-                  {alignment}
-                </td>
-                <td style={{ color: getScaledColor(threat as number, 0, 50) }}>
-                  {threat as number}
-                </td>
-              </tr>
-            ))}
+            {Object.entries(getAlignmentThreatMap(deckCards)).map(
+              ([alignment, threat]) => (
+                <tr key={alignment}>
+                  <td
+                    style={{ color: getAlignmentColor(alignment as Alignment) }}
+                  >
+                    {alignment}
+                  </td>
+                  <td
+                    style={{ color: getScaledColor(threat as number, 0, 50) }}
+                  >
+                    {threat as number}
+                  </td>
+                </tr>
+              )
+            )}
           </tbody>
         </table>
       </div>

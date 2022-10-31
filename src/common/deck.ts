@@ -1,5 +1,6 @@
 import { default as cards } from "../assets/card_list";
 import { default as fields } from "../assets/field.json";
+import { getCardThreatMap } from "./threat";
 
 export type NumTributes = 0 | 1 | 2 | 3;
 
@@ -45,11 +46,13 @@ const sortDeck = (a: Card, b: Card) => {
   return atkDefA - atkDefB || a.atk - b.atk || a.def - b.def;
 };
 
-export const getDeck = (deck: Deck, field: Field) => {
+export const getDeck = (deck: Deck, field: Field): DeckCard[] => {
+  const cardThreatMap = getCardThreatMap(deck, field);
   return Object.entries(deck)
     .map(([cardName, qty]: [string, number]) => {
       const card = getCardData(cardName as CardName, field);
-      return { qty, ...card };
+      const threat = cardThreatMap[cardName as CardName]!;
+      return { qty, threat, ...card };
     })
     .sort(sortDeck);
 };

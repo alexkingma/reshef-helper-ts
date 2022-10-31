@@ -18,68 +18,7 @@ const getTributeThreatMultiplier = (card: MonsterCard | GodCard) => {
   return TRIBUTE_THREAT_MULTIPLIER_MAP[numTributes];
 };
 
-export const getAlignmentThreatMap = (deck: Deck, field: Field) => {
-  const threatMap = {
-    Fiend: 0,
-    Earth: 0,
-    Forest: 0,
-    Water: 0,
-    Dark: 0,
-    Light: 0,
-    Wind: 0,
-    Fire: 0,
-    Dreams: 0,
-    Divine: 0,
-    Thunder: 0,
-  };
-
-  // compare against a deck's range of monsters to determine relative threat level
-  const tributeAtkDefRange = getDeckTributeAtkDefMap(deck, field);
-  Object.entries(deck).map(([cardName, qty]) => {
-    const card = getCardData(cardName as CardName, field);
-    if (card.category !== "Monster") return;
-    const { max, min } = tributeAtkDefRange[getNumTributes(card)];
-    threatMap[card.alignment] += getCardThreat(card, min, max) * qty;
-  });
-
-  // normalise threat scores as a percentage of deck total threat
-  const totalThreat = Object.values(threatMap).reduce(
-    (total, x) => total + x,
-    0
-  );
-  Object.entries(threatMap).map(([alignment, threat]) => {
-    if (!threatMap[alignment as keyof typeof threatMap]) {
-      delete threatMap[alignment as keyof typeof threatMap];
-      return;
-    }
-    threatMap[alignment as keyof typeof threatMap] = Math.round(
-      (threat / totalThreat) * 100
-    );
-  });
-
-  // sort alignments by threat level
-  return Object.entries(threatMap)
-    .sort(([, a], [, b]) => b - a)
-    .reduce(
-      (map, [alignment, threat]) => ({ ...map, [alignment]: threat }),
-      {}
-    );
-};
-
-// compare against a deck's range of monsters to determine relative threat level
-const getCardThreat = (
-  card: Card,
-  deckMinAtkDef: number,
-  deckMaxAtkDef: number
-) => {
-  if (card.category !== "Monster") return -1;
-  const atkDef = Math.max(card.atk, card.def * DEF_MULTIPLIER);
-  const relativeMultiplier =
-    0.5 + (atkDef - deckMinAtkDef) / (deckMaxAtkDef - deckMinAtkDef + 1);
-  return atkDef * relativeMultiplier * getTributeThreatMultiplier(card);
-};
-
-const getDeckTributeAtkDefMap = (deck: Deck, field: Field) => {
+export const getDeckTributeAtkDefMap = (deck: Deck, field: Field) => {
   // compute max/min atkDef for each tribute tier in a deck
   return Object.keys(deck).reduce((map, cardName) => {
     const cardData = getCardData(cardName as CardName, field);
@@ -92,4 +31,71 @@ const getDeckTributeAtkDefMap = (deck: Deck, field: Field) => {
     };
     return map;
   }, {} as DeckTributeAtkDefMap);
+};
+
+export const getAlignmentThreatMap = (deckCards: DeckCard[]) => {
+  const alignmentThreatMap = deckCards.reduce(
+    (map, deckCard) => {
+      if (deckCard.category !== "Monster") return map;
+      map[deckCard.alignment] += deckCard.threat;
+      return map;
+    },
+    {
+      Fiend: 0,
+      Earth: 0,
+      Forest: 0,
+      Water: 0,
+      Dark: 0,
+      Light: 0,
+      Wind: 0,
+      Fire: 0,
+      Dreams: 0,
+      Divine: 0,
+      Thunder: 0,
+    }
+  );
+
+  // sort alignments by threat level; remove 0-threats
+  return Object.entries(alignmentThreatMap)
+    .sort(([, a], [, b]) => b - a)
+    .filter(([, threat]) => threat)
+    .reduce(
+      (map, [alignment, threat]) => ({ ...map, [alignment]: threat }),
+      {}
+    );
+};
+
+export const getCardThreat = (
+  card: Card,
+  deckMinAtkDef: number,
+  deckMaxAtkDef: number
+) => {
+  if (card.category !== "Monster") return -1;
+  const atkDef = Math.max(card.atk, card.def * DEF_MULTIPLIER);
+  const relativeMultiplier =
+    0.5 + (atkDef - deckMinAtkDef) / (deckMaxAtkDef - deckMinAtkDef + 1);
+  return atkDef * relativeMultiplier * getTributeThreatMultiplier(card);
+};
+
+export const getCardThreatMap = (deck: Deck, field: Field) => {
+  let totalDeckThreat = 0;
+  const tributeAtkDefRange = getDeckTributeAtkDefMap(deck, field);
+  const cardThreatMap = Object.entries(deck).reduce((map, [cardName, qty]) => {
+    const card = getCardData(cardName as CardName, field);
+    if (card.category !== "Monster") return map;
+    const { max, min } = tributeAtkDefRange[getNumTributes(card)];
+    const cardThreat = getCardThreat(card, min, max) * qty;
+    map[card.name] = cardThreat;
+    totalDeckThreat += cardThreat;
+    return map;
+  }, {} as { [cardName in CardName]?: number });
+
+  // normalise threat scores as a percentage of deck total threat
+  Object.entries(cardThreatMap).map(([cardName, rawThreat]) => {
+    cardThreatMap[cardName as CardName] = Math.round(
+      (rawThreat / totalDeckThreat) * 100
+    );
+  });
+
+  return cardThreatMap;
 };
