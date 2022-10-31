@@ -258,7 +258,7 @@ const duellists: Duellist[] = [
     lp: 8000,
     field: "Yami",
     location: "Clock Tower Square",
-    payout: 0,
+    payout: 600,
     ante: [
       "The Last Warrior from Another Planet",
       "Final Flame",
@@ -302,7 +302,7 @@ const duellists: Duellist[] = [
     lp: 8000,
     field: "Arena",
     location: "KaibaCorp",
-    payout: 0,
+    payout: 800,
     ante: [
       "Cyber Jar",
       "Satellite Cannon",
@@ -383,7 +383,7 @@ const duellists: Duellist[] = [
     lp: 8000,
     field: "Yami",
     location: "Galapagos",
-    payout: 0,
+    payout: 1000,
     ante: [
       "Humanoid Slime",
       "Worm Drake",
@@ -441,7 +441,7 @@ const duellists: Duellist[] = [
     lp: 8000,
     field: "Yami",
     location: "China",
-    payout: 0,
+    payout: 900,
     ante: [
       "Grand Tiki Elder",
       "Melchid the Four-Face Beast",
@@ -470,7 +470,7 @@ const duellists: Duellist[] = [
     lp: 8000,
     field: "Yami",
     location: "Domino Pier",
-    payout: 0,
+    payout: 800,
     ante: [
       "The Stern Mystic",
       "Dark Magician",
@@ -970,7 +970,7 @@ const duellists: Duellist[] = [
     lp: 8000,
     field: "Yami",
     location: "Duel Express",
-    payout: 0,
+    payout: 100,
     ante: [
       "Mooyan Curry",
       "Saber Slasher",
@@ -1046,7 +1046,7 @@ const duellists: Duellist[] = [
     lp: 8000,
     field: "Yami",
     location: "Galapagos",
-    payout: 0,
+    payout: 1200,
     ante: [
       "Dream Clown",
       "Big Eye",
@@ -1125,7 +1125,7 @@ const duellists: Duellist[] = [
     lp: 8000,
     field: "Yami",
     location: "China",
-    payout: 0,
+    payout: 300,
     ante: [
       "Magical Labyrinth",
       "Cursebreaker",
@@ -1163,7 +1163,7 @@ const duellists: Duellist[] = [
     lp: 8000,
     field: "Yami",
     location: "China",
-    payout: 0,
+    payout: 800,
     ante: ["Kazejin", "Suijin", "Sanga of the Thunder"],
   },
   {
@@ -1282,7 +1282,7 @@ const duellists: Duellist[] = [
     lp: 8000,
     field: "Arena",
     location: "Clock Tower Square",
-    payout: 0,
+    payout: 200,
     ante: [
       "Curtain of the Dark Ones",
       "Djinn the Watcher of the Wind",
@@ -1366,7 +1366,7 @@ const duellists: Duellist[] = [
     lp: 8000,
     field: "Yami",
     location: "Clock Tower Square",
-    payout: 0,
+    payout: 600,
     ante: [
       "Right Leg of the Forbidden One",
       "Left Leg of the Forbidden One",
@@ -1396,7 +1396,7 @@ const duellists: Duellist[] = [
     lp: 8000,
     field: "Yami",
     location: "KaibaCorp",
-    payout: 0,
+    payout: 800,
     ante: [
       "Hannibal Necromancer",
       "Three-Headed Geedo",
@@ -1430,7 +1430,7 @@ const duellists: Duellist[] = [
     lp: 8000,
     field: "Arena",
     location: "Italy",
-    payout: 0,
+    payout: 400,
     ante: [
       "The Bewitching Phantom Thief",
       "The Melting Red Shadow",
@@ -1596,7 +1596,7 @@ const duellists: Duellist[] = [
     lp: 8000,
     field: "Wasteland",
     location: "Canada",
-    payout: 0,
+    payout: 800,
     ante: [
       "Sword Arm of Dragon",
       "Megazowler",
@@ -3219,7 +3219,7 @@ const duellists: Duellist[] = [
     lp: 8000,
     field: "Arena",
     location: "Domino Station",
-    payout: 0,
+    payout: 200,
     ante: [
       "Dark-Piercing Light",
       "Beast of Talwar",
@@ -3555,7 +3555,7 @@ const duellists: Duellist[] = [
     lp: 8000,
     field: "Arena",
     location: "Duel Express",
-    payout: 0,
+    payout: 96,
     ante: [
       "LaMoon",
       "Djinn the Watcher of the Wind",
@@ -4372,7 +4372,7 @@ const duellists: Duellist[] = [
     lp: 8000,
     field: "Yami",
     location: "Canada",
-    payout: 0,
+    payout: 390,
     ante: [
       "Saber Slasher",
       "Succubus Knight",
@@ -4455,7 +4455,7 @@ const duellists: Duellist[] = [
     lp: 2000,
     field: "Yami",
     location: "Duel Express",
-    payout: 0,
+    payout: 390,
     ante: [
       "Sword Hunter",
       "Ansatsu",
@@ -4495,7 +4495,7 @@ const duellists: Duellist[] = [
     lp: 2000,
     field: "Yami",
     location: "Duel Express",
-    payout: 0,
+    payout: 310,
     ante: [
       "Skull Knight",
       "Warrior of Tradition",
@@ -4830,7 +4830,7 @@ const duellists: Duellist[] = [
     lp: 8000,
     field: "Yami",
     location: "Italy",
-    payout: 0,
+    payout: 280,
     ante: [
       "Ill Witch",
       "Succubus Knight",
@@ -4907,7 +4907,7 @@ const duellists: Duellist[] = [
     lp: 8000,
     field: "Arena",
     location: "Egypt Exhibition",
-    payout: 0,
+    payout: 400,
     ante: [
       "LaMoon",
       "Necrolancer the Timelord",
@@ -4952,7 +4952,7 @@ const duellists: Duellist[] = [
     lp: 8000,
     field: "Arena",
     location: "Domino Pier",
-    payout: 0,
+    payout: 400,
     ante: [
       "White Magical Hat",
       "Flame Manipulator",
@@ -4997,7 +4997,7 @@ const duellists: Duellist[] = [
     lp: 8000,
     field: "Arena",
     location: "Italy",
-    payout: 0,
+    payout: 400,
     ante: [
       "Nightmare Scorpion",
       "Toad Master",
@@ -5040,7 +5040,7 @@ const duellists: Duellist[] = [
     lp: 8000,
     field: "Arena",
     location: "China",
-    payout: 0,
+    payout: 1000,
     ante: [
       "Flame Manipulator",
       "Karate Man",
@@ -5087,7 +5087,7 @@ const duellists: Duellist[] = [
     lp: 8000,
     field: "Arena",
     location: "Canada",
-    payout: 0,
+    payout: 1000,
     ante: [
       "Horn Imp",
       "Humanoid Slime",
