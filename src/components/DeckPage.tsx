@@ -1,0 +1,38 @@
+import React from "react";
+
+import duellists from "../assets/duellists";
+import { getDeckCards, getDeckCapacity } from "../common/deck";
+import DeckHeader from "./DeckHeader";
+import DeckCardList from "./DeckCardList";
+import ThreatBreakdown from "./ThreatBreakdown";
+
+interface Props {
+  duellistName: string;
+  goToDeck: (duellistName: string) => void;
+}
+
+const DeckPage = ({ duellistName, goToDeck }: Props) => {
+  const duellistIdx = duellists.findIndex((d) => d.name === duellistName);
+  const duellist = duellists[duellistIdx];
+  const deckCards = getDeckCards(duellist.deck, duellist.field);
+  const { effectiveDC, rawDC } = getDeckCapacity(duellist.deck);
+
+  const goToPrevDuellist = () => goToDeck(duellists[duellistIdx - 1].name);
+  const goToNextDuellist = () => goToDeck(duellists[duellistIdx + 1].name);
+
+  return (
+    <>
+      <DeckHeader
+        duellist={duellist}
+        effectiveDC={effectiveDC}
+        rawDC={rawDC}
+        onPrevClick={goToPrevDuellist}
+        onNextClick={goToNextDuellist}
+      />
+      <DeckCardList deckCards={deckCards} />
+      <ThreatBreakdown deckCards={deckCards} />
+    </>
+  );
+};
+
+export default DeckPage;

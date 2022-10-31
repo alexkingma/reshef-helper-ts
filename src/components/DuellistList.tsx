@@ -4,7 +4,6 @@ import { Card as MuiCard } from "@mui/material";
 import { ArrowDownward } from "@mui/icons-material";
 
 import { default as duellists } from "../assets/duellists";
-import { default as routeDuellists } from "../assets/route_duellists";
 import { getDeckCapacity } from "../common/deck";
 import useDuellistColumns, { DuellistRow } from "../common/useDuellistColumns";
 
@@ -18,24 +17,19 @@ const getDC = (deck: Deck) => {
   return `${effectiveDC.toLocaleString()} (${rawDC.toLocaleString()})`;
 };
 
-const data = routeDuellists
-  .reduce((list: Duellist[], duellistName) => {
-    // only list the route duellists for now
-    list.push(duellists.find(({ name }) => name === duellistName)!);
-    return list;
-  }, [])
-  .map((duellist: Duellist, idx) => {
-    const { deck, ...props } = duellist;
-    return {
-      ...props,
-      id: idx + 1,
-      dc: getDC(deck),
-      numCards: Object.values(deck).reduce((sum, a) => sum + a),
-    };
-  });
+const data = duellists.map((duellist: Duellist, idx) => {
+  const { deck, ...props } = duellist;
+  return {
+    ...props,
+    id: idx + 1,
+    dc: getDC(deck),
+    numCards: Object.values(deck).reduce((sum, a) => sum + a),
+  };
+});
 
 const DuellistList = ({ goToDeck }: Props) => {
   const { columns } = useDuellistColumns();
+
   const onRowClicked = (row: DuellistRow) => {
     goToDeck(row.name);
   };

@@ -63,7 +63,7 @@ const sortDeck = (a: Card, b: Card) => {
   return atkDefA - atkDefB || a.atk - b.atk || a.def - b.def;
 };
 
-export const getDeck = (deck: Deck, field: Field): DeckCard[] => {
+export const getDeckCards = (deck: Deck, field: Field): DeckCard[] => {
   const cardThreatMap = getCardThreatMap(deck, field);
   return Object.entries(deck)
     .map(([cardName, qty]: [string, number]) => {

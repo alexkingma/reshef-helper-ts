@@ -3,16 +3,11 @@ import DataTable, { TableColumn } from "react-data-table-component";
 import { Card as MuiCard } from "@mui/material";
 import { ArrowDownward } from "@mui/icons-material";
 
-import useCardColumns, {
-  getAlignmentColor,
-  getScaledColor,
-} from "../common/useCardColumns";
-import duellists from "../assets/duellists";
-import { getDeck, getDeckCapacity, getNumTributes } from "../common/deck";
-import { getAlignmentThreatMap } from "../common/threat";
+import useCardColumns, { getScaledColor } from "../common/useCardColumns";
+import { getNumTributes } from "../common/deck";
 
 interface Props {
-  duellistName: string;
+  deckCards: DeckCard[];
 }
 
 type DataMapKey =
@@ -27,8 +22,7 @@ type DataMap = {
   [key in DataMapKey]: DeckCard[];
 };
 
-const DeckDetail = ({ duellistName }: Props) => {
-  const duellist = duellists.find((d) => d.name === duellistName) as Duellist;
+const DeckCardList = ({ deckCards }: Props) => {
   const { columns } = useCardColumns();
   const newColumns: TableColumn<DeckCard>[] = [
     {
@@ -54,7 +48,6 @@ const DeckDetail = ({ duellistName }: Props) => {
     ...(columns as DeckCard[]),
   ].filter((col) => !["ID", "Code"].includes(col.name));
 
-  const deckCards = getDeck(duellist.deck, duellist.field);
   const dataMap = deckCards.reduce(
     (map, card) => {
       switch (card.category) {
@@ -102,11 +95,8 @@ const DeckDetail = ({ duellistName }: Props) => {
     { title: "Ritual", cards: dataMap.ritual },
   ];
 
-  const { effectiveDC, rawDC } = getDeckCapacity(duellist.deck);
-
   return (
     <MuiCard>
-      <h3>{duellistName}</h3>
       {tables.map(
         (table, idx) =>
           !!table.cards.length && (
@@ -126,36 +116,8 @@ const DeckDetail = ({ duellistName }: Props) => {
             </React.Fragment>
           )
       )}
-      <div>Field: {duellist.field}</div>
-      <div>
-        DC: {effectiveDC} {effectiveDC !== rawDC && `(${rawDC})`}
-      </div>
-      <div>
-        Alignment Threat:
-        <table style={{ paddingLeft: "20px" }}>
-          <tbody>
-            {Object.entries(getAlignmentThreatMap(deckCards)).map(
-              ([alignment, threat]) => (
-                <tr key={alignment}>
-                  <td
-                    style={{ color: getAlignmentColor(alignment as Alignment) }}
-                  >
-                    {alignment}
-                  </td>
-                  <td
-                    style={{ color: getScaledColor(threat as number, 0, 50) }}
-                  >
-                    {threat as number}
-                  </td>
-                </tr>
-              )
-            )}
-          </tbody>
-        </table>
-      </div>
-      <div>Types: ?</div>
     </MuiCard>
   );
 };
 
-export default DeckDetail;
+export default DeckCardList;
