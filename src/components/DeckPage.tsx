@@ -33,8 +33,10 @@ const DeckPage = ({ duellistName, goToDeck }: Props) => {
         onNextClick={goToNextDuellist}
       />
       <DeckCardList deckCards={deckCards} />
-      <AnteList cardNames={duellist.ante} />
-      <ThreatBreakdown deckCards={deckCards} />
+      <div style={{ display: "flex", justifyContent: "space-between" }}>
+        <ThreatBreakdown deckCards={deckCards} />
+        <AnteList cardNames={duellist.ante} />
+      </div>
     </DuellistFieldContext.Provider>
   );
 };
