@@ -52,7 +52,13 @@ export const getNumTributes = ({ level }: MonsterCard): NumTributes => {
   return level >= 9 ? 3 : level >= 7 ? 2 : level >= 5 ? 1 : 0;
 };
 
-const sortDeck = (a: Card, b: Card) => {
+export const sortDeck = (a: Card, b: Card): number => {
+  if (a.category !== b.category) {
+    const catOrder: CardCategory[] = ["Monster", "Magic", "Trap", "Ritual"];
+    const idxA = catOrder.findIndex((cat) => cat === a.category);
+    const idxB = catOrder.findIndex((cat) => cat === b.category);
+    return idxA - idxB;
+  }
   if (a.category !== "Monster" || b.category !== "Monster") {
     return a.cost - b.cost;
   }

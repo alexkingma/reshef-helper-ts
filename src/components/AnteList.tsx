@@ -4,7 +4,7 @@ import { Card as MuiCard } from "@mui/material";
 import { ArrowDownward } from "@mui/icons-material";
 
 import useCardColumns from "../common/useCardColumns";
-import { getCardData } from "../common/deck";
+import { getCardData, sortDeck } from "../common/deck";
 
 interface Props {
   cardNames: CardName[];
@@ -21,7 +21,9 @@ const AnteList = ({ cardNames }: Props) => {
     "def",
   ]) as TableColumn<Card>[];
 
-  const cards = cardNames.map((cardName) => getCardData(cardName, "Arena"));
+  const cards = cardNames
+    .map((cardName) => getCardData(cardName, "Arena"))
+    .sort(sortDeck);
 
   const onRowClicked = (row: Card) => {
     const link = `https://yugipedia.com/wiki/${row.name.replace(
