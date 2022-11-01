@@ -21,21 +21,24 @@ export const getCardData = (cardName: CardName, field: Field): Card => {
 export const getDeckCapacity = (deck: Deck) => {
   let rawDC = 0;
   let effectiveDC = 0;
-  Object.entries(deck).map(([cardName, quant]) => {
+  let count999 = 0;
+  Object.entries(deck).forEach(([cardName, quant]) => {
     const baseCost = getCardData(cardName as CardName, "Arena").cost;
     rawDC += baseCost * quant;
-    if (baseCost !== 999) {
-      effectiveDC += baseCost * quant;
+    if (baseCost === 999) {
+      count999++;
+      return;
     }
+    effectiveDC += baseCost * quant;
   });
-  return { effectiveDC, rawDC };
+  return { effectiveDC, rawDC, count999 };
 };
 
 export const getAverageCardCost = (deck: Deck) => {
-  const { effectiveDC, rawDC } = getDeckCapacity(deck);
+  const { effectiveDC, rawDC, count999 } = getDeckCapacity(deck);
   const numCards = Object.values(deck).reduce((sum, qty) => sum + qty, 0);
   return {
-    effectiveAvg: Math.round(effectiveDC / numCards),
+    effectiveAvg: Math.round(effectiveDC / (numCards - count999)),
     rawAvg: Math.round(rawDC / numCards),
   };
 };
