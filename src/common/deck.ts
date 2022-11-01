@@ -4,7 +4,7 @@ import { getCardThreatMap } from "./threat";
 
 export type NumTributes = 0 | 1 | 2 | 3;
 
-const getFieldMultipliers = (field: Field) => {
+export const getFieldMultipliers = (field: Field) => {
   return fields[field] as { [key in CardType]: number };
 };
 

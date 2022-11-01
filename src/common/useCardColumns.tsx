@@ -1,4 +1,8 @@
+import { useContext } from "react";
 import { TableColumn } from "react-data-table-component/dist/src/DataTable/types";
+import { DuellistFieldContext } from "../components/DeckPage";
+
+import { getFieldMultipliers } from "./deck";
 
 export const getScaledColor = (val: number, min: number, max: number) => {
   const hue = Math.floor((val / (max - min)) * 120); // from green to red
@@ -48,6 +52,8 @@ export const getCategoryColor = (row: Card) => {
 };
 
 const useCardColumns = () => {
+  const duellistField = useContext(DuellistFieldContext);
+
   const columns: TableColumn<Card>[] = [
     {
       name: "ID",
@@ -145,6 +151,21 @@ const useCardColumns = () => {
       name: "Type",
       selector: (row: Card) => ("type" in row ? row.type : ""),
       sortable: true,
+      conditionalCellStyles: [
+        {
+          when: (row: Card) => true,
+          style: (row: Card) => {
+            let color = "inherit";
+            if ("type" in row) {
+              const cardFieldMulti =
+                getFieldMultipliers(duellistField)[row.type];
+              if (cardFieldMulti > 1) color = "green";
+              if (cardFieldMulti < 1) color = "red";
+            }
+            return { color };
+          },
+        },
+      ],
     },
     {
       name: "Code",

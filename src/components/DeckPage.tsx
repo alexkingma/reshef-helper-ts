@@ -1,4 +1,4 @@
-import React from "react";
+import React, { createContext } from "react";
 
 import duellists from "../assets/duellists";
 import { getDeckCards, getDeckCapacity } from "../common/deck";
@@ -11,6 +11,8 @@ interface Props {
   goToDeck: (duellistName: string) => void;
 }
 
+export const DuellistFieldContext = createContext("Arena" as Field);
+
 const DeckPage = ({ duellistName, goToDeck }: Props) => {
   const duellistIdx = duellists.findIndex((d) => d.name === duellistName);
   const duellist = duellists[duellistIdx];
@@ -21,7 +23,7 @@ const DeckPage = ({ duellistName, goToDeck }: Props) => {
   const goToNextDuellist = () => goToDeck(duellists[duellistIdx + 1].name);
 
   return (
-    <>
+    <DuellistFieldContext.Provider value={duellist.field}>
       <DeckHeader
         duellist={duellist}
         effectiveDC={effectiveDC}
@@ -31,7 +33,7 @@ const DeckPage = ({ duellistName, goToDeck }: Props) => {
       />
       <DeckCardList deckCards={deckCards} />
       <ThreatBreakdown deckCards={deckCards} />
-    </>
+    </DuellistFieldContext.Provider>
   );
 };
 
