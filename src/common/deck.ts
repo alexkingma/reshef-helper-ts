@@ -34,6 +34,12 @@ export const getDeckCapacity = (deck: Deck) => {
   return { effectiveDC, rawDC, count999 };
 };
 
+export const getDeckCapacityString = (deck: Deck) => {
+  const { effectiveDC, rawDC } = getDeckCapacity(deck);
+  if (effectiveDC === rawDC) return rawDC.toLocaleString();
+  return `${effectiveDC.toLocaleString()} (${rawDC.toLocaleString()})`;
+};
+
 export const getAverageCardCost = (deck: Deck) => {
   const { effectiveDC, rawDC, count999 } = getDeckCapacity(deck);
   const numCards = Object.values(deck).reduce((sum, qty) => sum + qty, 0);

@@ -3,7 +3,7 @@ import DataTable, { TableColumn } from "react-data-table-component";
 import { Card as MuiCard } from "@mui/material";
 import { ArrowDownward } from "@mui/icons-material";
 
-import useCardColumns, { getScaledColor } from "../common/useCardColumns";
+import useCardColumns from "../common/useCardColumns";
 import { getNumTributes } from "../common/deck";
 
 interface Props {

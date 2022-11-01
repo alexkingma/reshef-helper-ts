@@ -5796,12 +5796,15 @@ const duellists: Duellist[] = [
   },
 ];
 
-const routeDuellists = routeDuellistNames.reduce(
-  (arr: Duellist[], duellistName: string) => [
-    ...arr,
-    duellists.find((d) => d.name === duellistName)!,
-  ],
-  []
-);
-
-export default routeDuellists;
+export const getDuellists = (routeOnly: boolean) => {
+  if (!routeOnly) {
+    return duellists;
+  }
+  return routeDuellistNames.reduce(
+    (arr: Duellist[], duellistName: string) => [
+      ...arr,
+      duellists.find((d) => d.name === duellistName)!,
+    ],
+    []
+  );
+};

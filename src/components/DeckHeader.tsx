@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Button, Typography } from "@mui/material";
 import { ArrowLeft, ArrowRight } from "@mui/icons-material";
 
-import duellists from "../assets/duellists";
+import { DuellistsContext } from "../App";
+
 import "./DeckHeader.css";
 
 interface Props {
@@ -20,6 +21,7 @@ const DeckHeader = ({
   onPrevClick,
   onNextClick,
 }: Props) => {
+  const duellists = useContext(DuellistsContext);
   const duellistIdx = duellists.findIndex((d) => d.name === duellist.name);
   const numDuellists = duellists.length;
   const isFirst = duellistIdx === 0;

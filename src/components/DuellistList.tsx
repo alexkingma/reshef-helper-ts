@@ -1,43 +1,35 @@
-import React from "react";
+import React, { useContext } from "react";
 import DataTable from "react-data-table-component";
 import { Card as MuiCard } from "@mui/material";
 import { ArrowDownward } from "@mui/icons-material";
 
-import duellists from "../assets/duellists";
-import { getDeckCapacity } from "../common/deck";
+import { getDeckCapacityString } from "../common/deck";
 import useDuellistColumns, { DuellistRow } from "../common/useDuellistColumns";
+import { DuellistsContext } from "../App";
 
 interface Props {
   goToDeck: (name: string) => void;
 }
 
-const getDC = (deck: Deck) => {
-  const { effectiveDC, rawDC } = getDeckCapacity(deck);
-  if (effectiveDC === rawDC) return rawDC.toLocaleString();
-  return `${effectiveDC.toLocaleString()} (${rawDC.toLocaleString()})`;
-};
-
-const data = duellists.map((duellist: Duellist, idx) => {
-  const { deck, ...props } = duellist;
-  return {
-    ...props,
-    id: idx + 1,
-    dc: getDC(deck),
-    numCards: Object.values(deck).reduce((sum, a) => sum + a),
-  };
-});
-
 const DuellistList = ({ goToDeck }: Props) => {
   const { columns } = useDuellistColumns();
+  const duellists = useContext(DuellistsContext);
+  const data = duellists.map((duellist, idx) => {
+    const { deck, ...props } = duellist;
+    return {
+      ...props,
+      id: idx + 1,
+      dc: getDeckCapacityString(deck),
+      numCards: Object.values(deck).reduce((sum, a) => sum + a),
+    };
+  });
 
-  const onRowClicked = (row: DuellistRow) => {
-    goToDeck(row.name);
-  };
+  const onRowClicked = (row: DuellistRow) => goToDeck(row.name);
 
   return (
     <MuiCard>
       <DataTable
-        title="Duellists"
+        title={`Duellists (${duellists.length} Total)`}
         columns={columns}
         data={data}
         defaultSortFieldId="id"
