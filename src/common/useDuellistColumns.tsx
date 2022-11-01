@@ -1,4 +1,4 @@
-import { TableColumn } from "react-data-table-component/dist/src/DataTable/types";
+import { TableColumn } from "react-data-table-component";
 import { getAverageAnteCost } from "./deck";
 import { getScaledColor } from "./useCardColumns";
 

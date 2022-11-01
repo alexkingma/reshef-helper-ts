@@ -23,30 +23,17 @@ type DataMap = {
 };
 
 const DeckCardList = ({ deckCards }: Props) => {
-  const { columns } = useCardColumns();
-  const newColumns: TableColumn<DeckCard>[] = [
-    {
-      name: "Qty",
-      selector: (row: DeckCard) => row.qty,
-      sortable: true,
-      width: "70px",
-    },
-    {
-      name: "Threat",
-      selector: (row: DeckCard) => row.threat,
-      sortable: true,
-      width: "90px",
-      conditionalCellStyles: [
-        {
-          when: (row: DeckCard) => true,
-          style: (row: DeckCard) => ({
-            color: getScaledColor(row.threat, 0, 20),
-          }),
-        },
-      ],
-    },
-    ...(columns as DeckCard[]),
-  ].filter((col) => !["ID", "Code"].includes(col.name));
+  const columns = useCardColumns([
+    "qty",
+    "threat",
+    "name",
+    "cost",
+    "level",
+    "atk",
+    "def",
+    "alignment",
+    "type",
+  ]) as TableColumn<DeckCard>[];
 
   const dataMap = deckCards.reduce(
     (map, card) => {
@@ -102,7 +89,7 @@ const DeckCardList = ({ deckCards }: Props) => {
           !!table.cards.length && (
             <React.Fragment key={table.title}>
               <DataTable
-                columns={newColumns}
+                columns={columns}
                 data={table.cards}
                 defaultSortFieldId="id"
                 sortIcon={<ArrowDownward />}

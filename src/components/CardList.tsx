@@ -1,5 +1,5 @@
 import React from "react";
-import DataTable from "react-data-table-component";
+import DataTable, { TableColumn } from "react-data-table-component";
 import { Card as MuiCard } from "@mui/material";
 import { ArrowDownward } from "@mui/icons-material";
 
@@ -9,7 +9,17 @@ import useCardColumns from "../common/useCardColumns";
 const data = cards.map((card) => ({ ...card })) as Card[];
 
 const CardList = () => {
-  const { columns } = useCardColumns();
+  const columns = useCardColumns([
+    "id",
+    "name",
+    "cost",
+    "level",
+    "atk",
+    "def",
+    "alignment",
+    "type",
+    "code",
+  ]) as TableColumn<Card>[];
 
   const onRowClicked = (row: Card) => {
     const link = `https://yugipedia.com/wiki/${row.name.replace(

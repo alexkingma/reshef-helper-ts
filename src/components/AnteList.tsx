@@ -3,7 +3,7 @@ import DataTable, { TableColumn } from "react-data-table-component";
 import { Card as MuiCard } from "@mui/material";
 import { ArrowDownward } from "@mui/icons-material";
 
-import { getCategoryColor, getScaledColor } from "../common/useCardColumns";
+import useCardColumns from "../common/useCardColumns";
 import { getCardData } from "../common/deck";
 
 interface Props {
@@ -11,34 +11,15 @@ interface Props {
 }
 
 const AnteList = ({ cardNames }: Props) => {
-  const columns: TableColumn<Card>[] = [
-    {
-      name: "Card",
-      selector: (row: Card) => row.name,
-      sortable: true,
-      conditionalCellStyles: [
-        {
-          when: (row: Card) => true,
-          style: (row: Card) => ({
-            color: getCategoryColor(row),
-          }),
-        },
-      ],
-    },
-    {
-      name: "Cost",
-      selector: (row: Card) => row.cost,
-      sortable: true,
-      conditionalCellStyles: [
-        {
-          when: (row: Card) => true,
-          style: (row: Card) => ({
-            color: getScaledColor(row.cost, 0, 585),
-          }),
-        },
-      ],
-    },
-  ];
+  if (!cardNames.length) return null;
+
+  const columns = useCardColumns([
+    "name",
+    "cost",
+    "level",
+    "atk",
+    "def",
+  ]) as TableColumn<Card>[];
 
   const cards = cardNames.map((cardName) => getCardData(cardName, "Arena"));
 
@@ -53,6 +34,9 @@ const AnteList = ({ cardNames }: Props) => {
   return (
     <MuiCard>
       <DataTable
+        title={`Ante Pool (1/${cardNames.length} or ${Math.round(
+          100 / cardNames.length
+        )}% each)`}
         columns={columns}
         data={cards}
         defaultSortFieldId="id"

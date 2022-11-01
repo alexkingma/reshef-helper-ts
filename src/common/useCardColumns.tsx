@@ -1,8 +1,23 @@
 import { useContext } from "react";
-import { TableColumn } from "react-data-table-component/dist/src/DataTable/types";
+import { TableColumn } from "react-data-table-component";
 import { DuellistFieldContext } from "../components/DeckPage";
 
 import { getFieldMultipliers } from "./deck";
+
+export type CardColumnKey =
+  | "id"
+  | "name"
+  | "cost"
+  | "level"
+  | "atk"
+  | "def"
+  | "alignment"
+  | "type"
+  | "code";
+export type DeckCardColumnKey = "qty" | "threat";
+
+type CardColumnMap = { [key in CardColumnKey]: TableColumn<Card> };
+type DeckCardColumnMap = { [key in DeckCardColumnKey]: TableColumn<DeckCard> };
 
 export const getScaledColor = (val: number, min: number, max: number) => {
   const hue = Math.floor((val / (max - min)) * 120); // from green to red
@@ -51,17 +66,19 @@ export const getCategoryColor = (row: Card) => {
   }
 };
 
-const useCardColumns = () => {
+const useCardColumns = (
+  desiredColumnKeys: (CardColumnKey | DeckCardColumnKey)[]
+) => {
   const duellistField = useContext(DuellistFieldContext);
 
-  const columns: TableColumn<Card>[] = [
-    {
+  const cardColumnMap: CardColumnMap = {
+    id: {
       name: "ID",
       selector: (row: Card) => row.id,
       sortable: true,
       width: "70px",
     },
-    {
+    name: {
       name: "Card",
       selector: (row: Card) => row.name,
       sortable: true,
@@ -75,7 +92,7 @@ const useCardColumns = () => {
         },
       ],
     },
-    {
+    cost: {
       name: "Cost",
       selector: (row: Card) => row.cost,
       sortable: true,
@@ -88,7 +105,7 @@ const useCardColumns = () => {
         },
       ],
     },
-    {
+    level: {
       name: "Level",
       selector: (row: Card) => {
         return "*"
@@ -97,7 +114,7 @@ const useCardColumns = () => {
       },
       sortable: true,
     },
-    {
+    atk: {
       name: "ATK",
       selector: (row: Card) => ("atk" in row ? row.atk : ""),
       sortable: true,
@@ -115,7 +132,7 @@ const useCardColumns = () => {
         return atkA - atkB;
       },
     },
-    {
+    def: {
       name: "DEF",
       selector: (row: Card) => ("def" in row ? row.def : ""),
       sortable: true,
@@ -133,7 +150,7 @@ const useCardColumns = () => {
         return defA - defB;
       },
     },
-    {
+    alignment: {
       name: "Alignment",
       selector: (row: Card) => ("alignment" in row ? row.alignment : ""),
       sortable: true,
@@ -147,7 +164,7 @@ const useCardColumns = () => {
         },
       ],
     },
-    {
+    type: {
       name: "Type",
       selector: (row: Card) => ("type" in row ? row.type : ""),
       sortable: true,
@@ -167,14 +184,38 @@ const useCardColumns = () => {
         },
       ],
     },
-    {
+    code: {
       name: "Code",
       selector: (row: Card) => (row.code !== -1 ? row.code : ""),
       sortable: true,
     },
-  ];
+  };
 
-  return { columns };
+  const deckCardColumnMap: DeckCardColumnMap = {
+    qty: {
+      name: "Qty",
+      selector: (row: DeckCard) => row.qty,
+      sortable: true,
+      width: "70px",
+    },
+    threat: {
+      name: "Threat",
+      selector: (row: DeckCard) => row.threat,
+      sortable: true,
+      width: "90px",
+      conditionalCellStyles: [
+        {
+          when: (row: DeckCard) => true,
+          style: (row: DeckCard) => ({
+            color: getScaledColor(row.threat, 0, 20),
+          }),
+        },
+      ],
+    },
+  };
+
+  const mergedColumnMap = { ...cardColumnMap, ...deckCardColumnMap };
+  return desiredColumnKeys.map((key) => mergedColumnMap[key]);
 };
 
 export default useCardColumns;
