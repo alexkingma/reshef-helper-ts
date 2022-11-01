@@ -5,6 +5,7 @@ import { getDeckCards, getDeckCapacity } from "../common/deck";
 import DeckHeader from "./DeckHeader";
 import DeckCardList from "./DeckCardList";
 import ThreatBreakdown from "./ThreatBreakdown";
+import AnteList from "./AnteList";
 
 interface Props {
   duellistName: string;
@@ -32,6 +33,7 @@ const DeckPage = ({ duellistName, goToDeck }: Props) => {
         onNextClick={goToNextDuellist}
       />
       <DeckCardList deckCards={deckCards} />
+      <AnteList cardNames={duellist.ante} />
       <ThreatBreakdown deckCards={deckCards} />
     </DuellistFieldContext.Provider>
   );
