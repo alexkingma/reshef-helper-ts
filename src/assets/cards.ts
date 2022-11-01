@@ -1,4 +1,4 @@
-const cards = [
+const cards: Card[] = [
   {
     id: 1,
     name: "Blue-Eyes White Dragon",
@@ -4399,7 +4399,7 @@ const cards = [
     name: "Black Luster Soldier",
     cost: 999,
     category: "Monster",
-    effect: "Ritual Monster",
+    effect: true,
     type: "Warrior",
     alignment: "Divine",
     level: 8,
@@ -8788,7 +8788,7 @@ const cards = [
     name: "Magician of Black Chaos",
     cost: 999,
     category: "Monster",
-    effect: "Ritual Monster",
+    effect: true,
     type: "Spellcaster",
     alignment: "Divine",
     level: 8,
@@ -8912,7 +8912,7 @@ const cards = [
     name: "Relinquished",
     cost: 999,
     category: "Monster",
-    effect: "Ritual Monster",
+    effect: true,
     type: "Spellcaster",
     alignment: "Divine",
     level: 1,

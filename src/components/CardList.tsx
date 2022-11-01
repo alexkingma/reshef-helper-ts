@@ -3,10 +3,8 @@ import DataTable, { TableColumn } from "react-data-table-component";
 import { Card as MuiCard } from "@mui/material";
 import { ArrowDownward } from "@mui/icons-material";
 
-import { default as cards } from "../assets/cards";
+import cards from "../assets/cards";
 import useCardColumns from "../common/useCardColumns";
-
-const data = cards.map((card) => ({ ...card })) as Card[];
 
 const CardList = () => {
   const columns = useCardColumns([
@@ -34,7 +32,7 @@ const CardList = () => {
       <DataTable
         title="Cards"
         columns={columns}
-        data={data}
+        data={cards}
         defaultSortFieldId="id"
         sortIcon={<ArrowDownward />}
         pagination

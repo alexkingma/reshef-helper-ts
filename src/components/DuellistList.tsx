@@ -3,7 +3,7 @@ import DataTable from "react-data-table-component";
 import { Card as MuiCard } from "@mui/material";
 import { ArrowDownward } from "@mui/icons-material";
 
-import { default as duellists } from "../assets/duellists";
+import duellists from "../assets/duellists";
 import { getDeckCapacity } from "../common/deck";
 import useDuellistColumns, { DuellistRow } from "../common/useDuellistColumns";
 

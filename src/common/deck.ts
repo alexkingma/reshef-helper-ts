@@ -1,4 +1,4 @@
-import { default as cards } from "../assets/cards";
+import cards from "../assets/cards";
 import { default as fields } from "../assets/fields.json";
 import { getCardThreatMap } from "./threat";
 
@@ -9,7 +9,7 @@ export const getFieldMultipliers = (field: Field) => {
 };
 
 export const getCardData = (cardName: CardName, field: Field): Card => {
-  const card = { ...cards.find((c) => c.name === cardName) } as Card;
+  const card = { ...cards.find((c) => c.name === cardName)! };
   if (card.category === "Monster") {
     const fieldBuffMap = getFieldMultipliers(field);
     card.atk = Math.floor(card.atk * (fieldBuffMap[card.type] || 1));
