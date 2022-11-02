@@ -5,24 +5,27 @@ import { ArrowDownward } from "@mui/icons-material";
 
 import { getDeckCapacityString } from "../common/deck";
 import useDuellistColumns, { DuellistRow } from "../common/useDuellistColumns";
-import { DuellistsContext } from "../App";
+import { duellists } from "../assets/duellists";
+import { RouteOnlyContext } from "../App";
 
 interface Props {
   goToDeck: (name: string) => void;
 }
 
 const DuellistList = ({ goToDeck }: Props) => {
+  const isRouteOnly = useContext(RouteOnlyContext);
   const { columns } = useDuellistColumns();
-  const duellists = useContext(DuellistsContext);
-  const data = duellists.map((duellist, idx) => {
-    const { deck, ...props } = duellist;
-    return {
-      ...props,
-      id: idx + 1,
-      dc: getDeckCapacityString(deck),
-      numCards: Object.values(deck).reduce((sum, a) => sum + a),
-    };
-  });
+  const data = duellists
+    .map((duellist, idx) => {
+      const { deck, ...props } = duellist;
+      return {
+        ...props,
+        id: idx + 1,
+        dc: getDeckCapacityString(deck),
+        numCards: Object.values(deck).reduce((sum, a) => sum + a),
+      };
+    })
+    .filter((duellist) => !isRouteOnly || duellist.inRoute);
 
   const onRowClicked = (row: DuellistRow) => goToDeck(row.name);
 

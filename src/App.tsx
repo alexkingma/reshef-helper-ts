@@ -4,9 +4,8 @@ import CardList from "./components/CardList";
 import DuellistList from "./components/DuellistList";
 import DeckPage from "./components/DeckPage";
 import AppHeader from "./components/AppHeader";
-import { getDuellists } from "./assets/duellists";
 
-export const DuellistsContext = createContext<Duellist[]>([]);
+export const RouteOnlyContext = createContext(true);
 
 const App = () => {
   const [mode, setMode] = useState("duellists");
@@ -19,9 +18,8 @@ const App = () => {
   };
 
   return (
-    <DuellistsContext.Provider value={getDuellists(isRouteOnly)}>
+    <RouteOnlyContext.Provider value={isRouteOnly}>
       <AppHeader
-        isRouteOnly={isRouteOnly}
         onRouteOnlyToggle={setIsRouteOnly}
         mode={mode}
         onModeChange={setMode}
@@ -33,7 +31,7 @@ const App = () => {
           <DeckPage duellistName={selectedDuellistName} goToDeck={goToDeck} />
         )}
       </>
-    </DuellistsContext.Provider>
+    </RouteOnlyContext.Provider>
   );
 };
 

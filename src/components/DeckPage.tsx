@@ -1,11 +1,11 @@
-import React, { createContext, useContext } from "react";
+import React, { createContext } from "react";
 
 import { getDeckCards, getDeckCapacity } from "../common/deck";
 import DeckHeader from "./DeckHeader";
 import DeckCardList from "./DeckCardList";
 import ThreatBreakdown from "./ThreatBreakdown";
 import AnteList from "./AnteList";
-import { DuellistsContext } from "../App";
+import { duellists } from "../assets/duellists";
 
 interface Props {
   duellistName: string;
@@ -15,14 +15,10 @@ interface Props {
 export const DuellistFieldContext = createContext("Arena" as Field);
 
 const DeckPage = ({ duellistName, goToDeck }: Props) => {
-  const duellists = useContext(DuellistsContext);
   const duellistIdx = duellists.findIndex((d) => d.name === duellistName);
   const duellist = duellists[duellistIdx];
   const deckCards = getDeckCards(duellist.deck, duellist.field);
   const { effectiveDC, rawDC } = getDeckCapacity(duellist.deck);
-
-  const goToPrevDuellist = () => goToDeck(duellists[duellistIdx - 1].name);
-  const goToNextDuellist = () => goToDeck(duellists[duellistIdx + 1].name);
 
   return (
     <DuellistFieldContext.Provider value={duellist.field}>
@@ -30,8 +26,7 @@ const DeckPage = ({ duellistName, goToDeck }: Props) => {
         duellist={duellist}
         effectiveDC={effectiveDC}
         rawDC={rawDC}
-        onPrevClick={goToPrevDuellist}
-        onNextClick={goToNextDuellist}
+        goToDeck={goToDeck}
       />
       <DeckCardList deckCards={deckCards} />
       <div style={{ display: "flex", justifyContent: "space-between" }}>

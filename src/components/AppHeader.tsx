@@ -1,19 +1,17 @@
+import React, { useContext } from "react";
 import { Checkbox, FormControlLabel } from "@mui/material";
-import React from "react";
+
+import { RouteOnlyContext } from "../App";
 
 interface Props {
-  isRouteOnly: boolean;
   onRouteOnlyToggle: (newIsRouteOnly: boolean) => void;
   mode: string;
   onModeChange: (newMode: string) => void;
 }
 
-const AppHeader = ({
-  mode,
-  onModeChange,
-  isRouteOnly,
-  onRouteOnlyToggle,
-}: Props) => {
+const AppHeader = ({ mode, onModeChange, onRouteOnlyToggle }: Props) => {
+  const isRouteOnly = useContext(RouteOnlyContext);
+
   return (
     <>
       <FormControlLabel

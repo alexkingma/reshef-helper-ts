@@ -1,4 +1,4 @@
-const duellists: Duellist[] = [
+export const duellists: Duellist[] = [
   {
     name: "Player (Initial Deck)",
     deck: {
@@ -5956,7 +5956,3 @@ const duellists: Duellist[] = [
     inRoute: false,
   },
 ];
-
-export const getDuellists = (routeOnly: boolean) => {
-  return routeOnly ? duellists.filter((d) => d.inRoute) : duellists;
-};
