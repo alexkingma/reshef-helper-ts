@@ -6,6 +6,7 @@ interface Duellist {
   payout: number;
   field: Field;
   ante: CardName[];
+  inRoute: boolean;
 }
 
 type Field = keyof typeof import("../assets/fields.json");

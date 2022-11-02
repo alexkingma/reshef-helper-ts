@@ -25,6 +25,14 @@ const useDuellistColumns = () => {
       selector: (row: DuellistRow) => row.name,
       sortable: true,
       grow: 3,
+      conditionalCellStyles: [
+        {
+          when: (row: DuellistRow) => true,
+          style: (row: DuellistRow) => ({
+            color: !row.inRoute ? "grey" : "inherit",
+          }),
+        },
+      ],
     },
     {
       name: "Ante Avg",
