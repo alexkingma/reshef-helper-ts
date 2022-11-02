@@ -26,6 +26,7 @@ const DeckCardList = ({ deckCards }: Props) => {
   const columns = useCardColumns([
     "qty",
     "threat",
+    "image",
     "name",
     "cost",
     "level",

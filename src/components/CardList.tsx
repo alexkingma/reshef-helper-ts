@@ -9,6 +9,7 @@ import useCardColumns from "../common/useCardColumns";
 const CardList = () => {
   const columns = useCardColumns([
     "id",
+    "image",
     "name",
     "cost",
     "level",

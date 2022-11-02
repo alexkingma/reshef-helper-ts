@@ -14,6 +14,7 @@ const AnteList = ({ cardNames }: Props) => {
   if (!cardNames.length) return null;
 
   const columns = useCardColumns([
+    "image",
     "name",
     "cost",
     "level",

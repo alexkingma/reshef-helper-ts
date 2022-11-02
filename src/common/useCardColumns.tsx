@@ -3,9 +3,11 @@ import { TableColumn } from "react-data-table-component";
 import { DuellistFieldContext } from "../components/DeckPage";
 
 import { getFieldMultipliers } from "./deck";
+import { getImage } from "./image";
 
 export type CardColumnKey =
   | "id"
+  | "image"
   | "name"
   | "cost"
   | "level"
@@ -77,6 +79,20 @@ const useCardColumns = (
       selector: (row: Card) => row.id,
       sortable: true,
       width: "70px",
+    },
+    image: {
+      name: "",
+      selector: (row: Card) => "",
+      sortable: true,
+      conditionalCellStyles: [
+        {
+          when: (row: Card) => true,
+          style: (row: Card) => ({
+            background: `no-repeat -16px url(${getImage(row.name)})`,
+          }),
+        },
+      ],
+      width: "80px",
     },
     name: {
       name: "Card",
