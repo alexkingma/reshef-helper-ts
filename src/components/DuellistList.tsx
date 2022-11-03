@@ -32,7 +32,7 @@ const DuellistList = ({ goToDeck }: Props) => {
   return (
     <MuiCard>
       <DataTable
-        title={`Duellists (${duellists.length} Total)`}
+        title={`Duellists`}
         columns={columns}
         data={data}
         defaultSortFieldId="id"
