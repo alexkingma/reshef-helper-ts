@@ -83,7 +83,6 @@ const useCardColumns = (
     image: {
       name: "",
       selector: (row: Card) => "",
-      sortable: true,
       conditionalCellStyles: [
         {
           when: (row: Card) => true,
@@ -203,7 +202,6 @@ const useCardColumns = (
     code: {
       name: "Code",
       selector: (row: Card) => (row.code !== -1 ? row.code : ""),
-      sortable: true,
     },
   };
 
@@ -211,14 +209,12 @@ const useCardColumns = (
     qty: {
       name: "Qty",
       selector: (row: DeckCard) => row.qty,
-      sortable: true,
-      width: "70px",
+      width: "60px",
     },
     threat: {
       name: "Threat",
       selector: (row: DeckCard) => row.threat,
-      sortable: true,
-      width: "90px",
+      width: "70px",
       conditionalCellStyles: [
         {
           when: (row: DeckCard) => true,
