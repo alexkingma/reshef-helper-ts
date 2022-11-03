@@ -31,7 +31,6 @@ const CardList = () => {
   return (
     <MuiCard>
       <DataTable
-        title="Cards"
         columns={columns}
         data={cards}
         defaultSortFieldId="id"

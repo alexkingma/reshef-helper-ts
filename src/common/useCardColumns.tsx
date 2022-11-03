@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { TableColumn } from "react-data-table-component";
+import { Media, TableColumn } from "react-data-table-component";
 import { DuellistFieldContext } from "../components/DeckPage";
 
 import { getFieldMultipliers } from "./deck";
@@ -202,6 +202,7 @@ const useCardColumns = (
     code: {
       name: "Code",
       selector: (row: Card) => (row.code !== -1 ? row.code : ""),
+      hide: Media.LG,
     },
   };
 
