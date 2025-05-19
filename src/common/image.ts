@@ -1,9 +1,11 @@
 const imageMap = (() => {
-  const reqContext = require.context("../assets/images/", false, /\.png$/);
-  const map = {} as { [key: string]: string };
-  reqContext.keys().forEach((item) => {
-    map[item.replace("./", "").replace("-ROD-EU-VG.png", "")] =
-      reqContext(item).default;
+  const modules = import.meta.glob("../assets/images/*.png", { eager: true });
+  const map: { [key: string]: string } = {};
+
+  Object.entries(modules).forEach(([path, mod]) => {
+    const fileName = path.split("/").pop()!;
+    const key = fileName.replace("-ROD-EU-VG.png", "");
+    map[key] = (mod as { default: string }).default;
   });
   return map;
 })();
