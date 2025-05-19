@@ -1,9 +1,12 @@
 import React, { createContext, useState } from "react";
 
-import CardList from "./components/CardList";
-import DuellistList from "./components/DuellistList";
-import DeckPage from "./components/DeckPage";
+import { disable, enable } from 'darkreader';
+import { useEffect } from 'react';
+
 import AppHeader from "./components/AppHeader";
+import CardList from "./components/CardList";
+import DeckPage from "./components/DeckPage";
+import DuellistList from "./components/DuellistList";
 
 import "./App.css";
 
@@ -17,12 +20,26 @@ const pages: Page[] = [{ title: "Duellists" }, { title: "Cards" }];
 const App = () => {
   const [activePage, setActivePage] = useState("Duellists");
   const [isRouteOnly, setIsRouteOnly] = useState(true);
+  const [isDarkMode, setIsDarkMode] = useState(true);
   const [selectedDuellistName, setSelectedDuellistName] = useState("");
 
   const goToDeck = (duellistName: string): void => {
     setActivePage("Deck");
     setSelectedDuellistName(duellistName);
   };
+
+  useEffect(() => {
+    if (isDarkMode) {
+      enable({
+        brightness: 100,
+        contrast: 90,
+        sepia: 10,
+      });
+    } else {
+      disable();
+    }
+  }, [isDarkMode]);
+
 
   return (
     <RouteOnlyContext.Provider value={isRouteOnly}>
